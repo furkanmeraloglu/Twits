@@ -30,16 +30,40 @@ class TweetController extends Controller
     // Giriş yapmış kullanıcı başkasına ait bir tweet'i beğenirse, o tweet beğenilenler listesine kullanıcı id'si ve tweet id'si ile kaydolur.
     // FrontEnd'de kullanıcı profilinde oluşturulacak bir beğenilen tweetler (likes) bağlantısı ile o kullanıcının beğendiği tüm tweetler listelenebilir.
 
-    public function like()
+    public function like(Request $request, Tweet $tweet)
     {
+        $request->user()->like($tweet);
+        return redirect()->route('dashboard');
+    }
 
+    public function unlike(Request $request, Tweet $tweet)
+    {
+        $request->user()->unlike($tweet);
+        return redirect()->route('dashboard');
+    }
+
+    public function favorite(Request $request, Tweet $tweet)
+    {
+        $request->user()->favorite($tweet);
+        return redirect()->route('dashboard');
+    }
+
+    public function unfavorite(Request $request, Tweet $tweet)
+    {
+        $request->user()->unfavorite($tweet);
+        return redirect()->route('dashboard');
     }
 
     // Giriş yapmış kullanıcının başka kullanıcının tweet'ini rt etmesi durumunda rt edilen tweetin rt eden kullanıcının feed'ine eklenmesi gerekiyor.
     // Bunu yapmak için de öncelikle rt eden kullanıcının id'si, rt edilen tweet'in id'si ve rt edilen tweet'in sahibinin id'si gerekiyor.
     // bu dataları ise database'e eklemek gerekiyor.
 
-    public function retweet()
+    public function retweet(Request $request, Tweet $tweet)
+    {
+
+    }
+
+    public function unretweet(Request $request, Tweet $tweet)
     {
 
     }

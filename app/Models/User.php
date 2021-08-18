@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Overtrue\LaravelFavorite\Traits\Favoriter;
 use Overtrue\LaravelFollow\Followable;
+use Overtrue\LaravelLike\Traits\Likeable;
+use Overtrue\LaravelLike\Traits\Liker;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Followable;
+    use HasApiTokens, HasFactory, Notifiable, Followable, Liker, Favoriter;
 
     public function tweets()
     {
