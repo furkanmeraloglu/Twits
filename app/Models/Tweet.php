@@ -11,6 +11,11 @@ class Tweet extends Model
 {
     use HasFactory, Likeable, Favoriteable;
 
+    public function tweet_feed()
+    {
+        return $this->belongsToMany(User::class, 'feed');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

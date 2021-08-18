@@ -16,21 +16,18 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="flex items-center justify-center" style="background: #edf2f7;">
+        <div class="bg-blue-900">
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-
+        </div>
+            
             <!-- Page Content -->
             <main>
+               
                 {{ $slot }}
+
             </main>
-        </div>
+
     </body>
 </html>

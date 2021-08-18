@@ -24,7 +24,7 @@ class TweetController extends Controller
         $userIds[] = $request->user()->id;
         $twits = Tweet::with(['user'])->whereIn('user_id', $userIds)->orderBy('created_at', 'desc')->get();
 
-        return view('profile', compact('twits'));
+        return view('dashboard', compact('twits'));
     }
 
     // Giriş yapmış kullanıcı başkasına ait bir tweet'i beğenirse, o tweet beğenilenler listesine kullanıcı id'si ve tweet id'si ile kaydolur.
@@ -60,12 +60,12 @@ class TweetController extends Controller
 
     public function retweet(Request $request, Tweet $tweet)
     {
-
+        $request->user()->profile_feed()->pluck($tweet->id)->attach(['isRetweet' => true]);
     }
 
     public function unretweet(Request $request, Tweet $tweet)
     {
-
+        $request->user()->profile_feed()->detach($tweet->id, ['isRetweet' => false]);
     }
 
     /**
