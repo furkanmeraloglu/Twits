@@ -7,10 +7,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Overtrue\LaravelFollow\Followable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Followable;
+
+    public function tweets()
+    {
+        return $this->hasMany(Tweet::class);
+    }
+
+    public function profile_feed()
+    {
+        return $this->belongsToMany(Tweet::class, 'feed');
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -19,8 +30,19 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'nickname',
+        'birth_date',
+        'bio',
+        'website',
+        'image_path',
+        'bg_image_path',
         'email',
         'password',
+    ];
+
+    protected $guarded = [
+        'id',
+        'isAdmin',
     ];
 
     /**
