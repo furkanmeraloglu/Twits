@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Tweet;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,12 +34,14 @@ Route::get('tweets/{tweet}/retweet', [TweetController::class, 'retweet'])->name(
 Route::get('tweets/{tweet}/unretweet', [TweetController::class, 'unretweet'])->name('tweets.unretweet');
 Route::get('tweets/{tweet}/favorite', [TweetController::class, 'favorite'])->name('tweets.favorite');
 Route::get('tweets/{tweet}/unfavorite', [TweetController::class, 'unfavorite'])->name('tweets.unfavorite');
-Route::get('tweets/homepage', [TweetController::class, 'homepage'])->name('tweets.homepage');
+/* Route::get('tweets/homepage', [TweetController::class, 'homepage'])->name('tweets.homepage');  Çalışmıyor*/ 
 Route::get('tweets/user_profile', [TweetController::class, 'user_profile'])->name('user_profile');
 
 Route::get('/dashboard', function () {
-    $users = User::where('id', '!=', auth()->id())->simplePaginate(5) ;
-    $tweets = Tweet::all();
+    $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
+    $userIds = Auth::user()->followings->pluck('id')->toArray();
+    $userIds[] = Auth::user()->id;
+    $tweets = Tweet::with(['user'])->whereIn('user_id', $userIds)->orderBy('created_at', 'desc')->get();
     return view('dashboard', compact('users', 'tweets'));
 })->middleware(['auth'])->name('dashboard');
 
