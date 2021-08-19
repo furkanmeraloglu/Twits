@@ -11,7 +11,7 @@
     <a href="#"
         class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline"><i
             class="fa fa-bookmark fa-lg"></i> Bookmarks </a>
-    <a href="#"
+    <a href="https://quickabdest.com/"
         class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline"><i
             class="fa fa-life-ring fa-lg"></i> Help Center </a>
 

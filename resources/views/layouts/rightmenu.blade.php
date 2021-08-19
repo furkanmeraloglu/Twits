@@ -22,7 +22,7 @@
                         <div>
                             <a href="{{ route('users.show', $user) }}"
                                 class="font-bold text-black">{{ $user->name }}</a> <a href="#"
-                                class="text-grey-dark">@'{{ $user->nickname }}'</a>
+                                class="text-grey-dark">@ {{ $user->nickname }} </a>
                         </div>
 
                         <div>

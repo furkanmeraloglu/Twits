@@ -16,7 +16,7 @@
                     <img src="https://source.unsplash.com/400x400" alt="logo"
                         class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
                 @else
-                    <img src="{{ 'images/' . Auth::user()->image_path }}" alt="logo"
+                    <img src="{{ './images/' . Auth::user()->image_path }}" alt="logo"
                         class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
                 @endif
             </div>
@@ -69,7 +69,7 @@
             <h1><a href="#" class="text-black font-bold no-underline hover:underline">{{ Auth::user()->name }}</a>
             </h1>
             <div class="mb-4"><a href="#"
-                    class="text-grey-darker no-underline hover:underline">@'{{ Auth::user()->nickname }}' </a></div>
+                    class="text-grey-darker no-underline hover:underline">@  {{ Auth::user()->nickname }} </a></div>
 
             <div class="mb-4">
                 {{ Auth::user()->bio }}
@@ -124,7 +124,7 @@
                             <div><a href="#"><img src="https://source.unsplash.com/400x400" alt="avatar"
                                         class="rounded-full h-12 w-12 mr-2"></a></div>
                         @else
-                            <div><a href="#"><img src="{{ $tweet->user->image_path }}" alt="avatar"
+                            <div><a href="#"><img src="{{ 'images/' . $tweet->user->image_path }}" alt="avatar"
                                         class="rounded-full h-12 w-12 mr-2"></a></div>
                         @endif
                     </div>
@@ -134,7 +134,7 @@
                             <div>
                                 <span class="font-bold"><a href="#"
                                         class="text-black">{{ $tweet->user->name }}</a></span>
-                                <span class="text-grey-dark">@'{{ $tweet->user->nickname }}'</span>
+                                <span class="text-grey-dark">@ {{ $tweet->user->nickname }}</span>
 
                                 <span class="text-grey-dark">{{ $tweet->created_at }}</span>
                             </div>

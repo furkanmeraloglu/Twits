@@ -67,7 +67,7 @@
     <div class="container mx-auto flex flex-col lg:flex-row mt-3 text-sm leading-normal pt-7">
         <div class="w-full lg:w-1/4 pl-4 lg:pl-0 pr-6 mt-8 mb-4">
             <h1><a href="#" class="text-black font-bold no-underline hover:underline">{{ $user->name }}</a></h1>
-            <div class="mb-4"><a href="#" class="text-grey-darker no-underline hover:underline">@'{{ $user->nickname }}' </a></div>
+            <div class="mb-4"><a href="#" class="text-grey-darker no-underline hover:underline">@ {{ $user->nickname }}</a></div>
 
             <div class="mb-4">
                {{ $user->bio }}
@@ -98,7 +98,7 @@
                     @if($tweet->user->image_path === null)
                     <div><a href="#"><img src="https://source.unsplash.com/400x400" alt="avatar" class="rounded-full h-12 w-12 mr-2"></a></div>
                     @else
-                    <div><a href="#"><img src="{{$tweet->user->image_path}}" alt="avatar" class="rounded-full h-12 w-12 mr-2"></a></div>
+                    <div><a href="#"><img src="{{ 'images/' . $user->image_path }}" alt="avatar" class="rounded-full h-12 w-12 mr-2"></a></div>
                     @endif
                 </div>
                 <div class="w-7/8 p-3 pl-0">
@@ -106,7 +106,7 @@
                     <div class="flex justify-between">
                         <div>
                             <span class="font-bold"><a href="#" class="text-black">{{ $tweet->user->name }}</a></span>
-                            <span class="text-grey-dark">@'{{ $tweet->user->nickname }}'</span>
+                            <span class="text-grey-dark">@ {{ $tweet->user->nickname }}</span>
                             
                             <span class="text-grey-dark">{{$tweet->created_at}}</span>
                         </div>
