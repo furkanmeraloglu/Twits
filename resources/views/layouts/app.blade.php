@@ -12,14 +12,16 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+        <script src="https://kit.fontawesome.com/dcd8b6ca00.js" crossorigin="anonymous"></script>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="flex items-center justify-center" style="background: #edf2f7;">
-        <div class="bg-blue-900">
+    <body class="bg-grey-light font-sans">
+        <div class="bg-white">
+            <div class="container mx-auto flex flex-col lg:flex-row items-center py-4">
             @include('layouts.navigation')
-
         </div>
             
             <!-- Page Content -->

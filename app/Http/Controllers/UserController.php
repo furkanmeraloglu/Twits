@@ -58,9 +58,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        $users = User::where('id', '!=', $user->id)->simplePaginate(5);
+        $tweets = $user->tweets()->get();
+        return view('user.show', compact('user', 'users', 'tweets'));
     }
 
     /**

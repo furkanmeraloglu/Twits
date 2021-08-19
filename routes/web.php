@@ -37,7 +37,7 @@ Route::get('tweets/homepage', [TweetController::class, 'homepage'])->name('homep
 Route::get('tweets/user_profile', [TweetController::class, 'user_profile'])->name('user_profile');
 
 Route::get('/dashboard', function () {
-    $users = User::where('id', '!=', auth()->id())->get();
+    $users = User::where('id', '!=', auth()->id())->simplePaginate(5) ;
     $tweets = Tweet::all();
     return view('dashboard', compact('users', 'tweets'));
 })->middleware(['auth'])->name('dashboard');

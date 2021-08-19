@@ -1,19 +1,19 @@
 <x-app-layout>
 
-    @if(Auth::user()->bg_image_path === null)
+    @if($user->bg_image_path === null)
     <div class="hero h-64 bg-cover h-112 full" style="background-image: url(https://source.unsplash.com/1500x500)"> </div>
     @else
-    <div class="hero h-64 bg-cover h-112 full" style="background-image: url({{ 'images/' . Auth::user()->bg_image_path }})"> </div>
+    <div class="hero h-64 bg-cover h-112 full" style="background-image: url({{ 'images/' . $user->bg_image_path }})"> </div>
     @endif
 
     <div class="bg-white shadow">
         <div class="container mx-auto flex flex-col lg:flex-row items-center lg:relative">
             <div class="w-full lg:w-1/4">
                 {{-- avatar --}}
-                @if(Auth::user()->image_path === null)
+                @if($user->image_path === null)
                 <img src="https://source.unsplash.com/400x400" alt="logo" class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
                 @else
-                <img src="{{ 'images/' . Auth::user()->image_path }}" alt="logo" class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
+                <img src="{{ 'images/' . $user->image_path }}" alt="logo" class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
                 @endif
             </div>
             <div class="w-full lg:w-1/2">
@@ -21,25 +21,25 @@
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent border-teal">
                         <a href="#" class="text-grey-darker no-underline hover:no-underline">
                             <div class="text-sm font-bold tracking-tight mb-1">Tweets</div>
-                            <div class="text-lg tracking-tight font-bold text-teal">{{Auth::user()->tweets()->count()}}</div>
+                            <div class="text-lg tracking-tight font-bold text-teal">{{$user->tweets()->count()}}</div>
                         </a>
                     </li>
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent hover:border-teal">
                         <a href="#" class="text-grey-darker no-underline hover:no-underline">
                             <div class="text-sm font-bold tracking-tight mb-1">Following</div>
-                            <div class="text-lg tracking-tight font-bold hover:text-teal">{{Auth::user()->followings()->count()}}</div>
+                            <div class="text-lg tracking-tight font-bold hover:text-teal">{{$user->followings()->count()}}</div>
                         </a>
                     </li>
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent hover:border-teal">
                         <a href="#" class="text-grey-darker no-underline hover:no-underline">
                             <div class="text-sm font-bold tracking-tight mb-1">Followers</div>
-                            <div class="text-lg tracking-tight font-bold hover:text-teal">{{Auth::user()->followers()->count()}}</div>
+                            <div class="text-lg tracking-tight font-bold hover:text-teal">{{$user->followers()->count()}}</div>
                         </a>
                     </li>
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent hover:border-teal">
                         <a href="#" class="text-grey-darker no-underline hover:no-underline">
                             <div class="text-sm font-bold tracking-tight mb-1">Likes</div>
-                            <div class="text-lg tracking-tight font-bold hover:text-teal">{{ Auth::user()->likes()->count() }}</div>
+                            <div class="text-lg tracking-tight font-bold hover:text-teal">{{ $user->likes()->count() }}</div>
                         </a>
                     </li>
                 </ul>
@@ -56,15 +56,15 @@
 
     <div class="container mx-auto flex flex-col lg:flex-row mt-3 text-sm leading-normal pt-7">
         <div class="w-full lg:w-1/4 pl-4 lg:pl-0 pr-6 mt-8 mb-4">
-            <h1><a href="#" class="text-black font-bold no-underline hover:underline">{{ Auth::user()->name }}</a></h1>
-            <div class="mb-4"><a href="#" class="text-grey-darker no-underline hover:underline">@'{{ Auth::user()->nickname }}' </a></div>
+            <h1><a href="#" class="text-black font-bold no-underline hover:underline">{{ $user->name }}</a></h1>
+            <div class="mb-4"><a href="#" class="text-grey-darker no-underline hover:underline">@'{{ $user->nickname }}' </a></div>
 
             <div class="mb-4">
-               {{ Auth::user()->bio }}
+               {{ $user->bio }}
             </div>
 
-            <div class="mb-2"><i class="fa fa-link fa-lg text-grey-darker mr-1"></i><a href="#" class="text-teal no-underline hover:underline">{{ Auth::user()->website}}</a></div>
-            <div class="mb-4"><i class="fa fa-calendar fa-lg text-grey-darker mr-1"></i><a href="#" class="text-teal no-underline hover:underline">Joined {{Auth::user()->created_at}}</a></div>
+            <div class="mb-2"><i class="fa fa-link fa-lg text-grey-darker mr-1"></i><a href="#" class="text-teal no-underline hover:underline">{{ $user->website}}</a></div>
+            <div class="mb-4"><i class="fa fa-calendar fa-lg text-grey-darker mr-1"></i><a href="#" class="text-teal no-underline hover:underline">Joined {{$user->created_at}}</a></div>
 
             
             <div class="mb-4"></div>
