@@ -11,24 +11,6 @@ class TweetController extends Controller
 {
     // Bu controller'da oluşturulan resource olmayan tüm metotların rotasını web.php'den kontrol et.
 
-    // Bir kullanıcıcın profilinde kendi twitleri ve retweet ettiği tweetler bulunacak. (index)
-
-    public function user_profile(Request $request)
-    {
-
-    }
-
-    // Homepage sayfasında bir kullanıcının takip ettiği kişilerin twitleri ve kendi twitleri yer alacak (index)
-
-    /* public function homepage(Request $request)
-    {
-        $userIds = $request->user()->followings->pluck('id')->toArray();
-        $userIds[] = $request->user()->id;
-        $twits = Tweet::with(['user'])->whereIn('user_id', $userIds)->orderBy('created_at', 'desc')->get();
-
-        return view('dashboard', compact('twits'));
-    } Route'tan buraya ulaşmıyor İndex'e taşındı.*/
-
     // Giriş yapmış kullanıcı başkasına ait bir tweet'i beğenirse, o tweet beğenilenler listesine kullanıcı id'si ve tweet id'si ile kaydolur.
     // FrontEnd'de kullanıcı profilinde oluşturulacak bir beğenilen tweetler (likes) bağlantısı ile o kullanıcının beğendiği tüm tweetler listelenebilir.
 
@@ -98,7 +80,6 @@ class TweetController extends Controller
      */
     public function index(Request $request)
     {
-
         $user = Auth::user();
         $tweets = Tweet::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
         $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);

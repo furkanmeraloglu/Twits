@@ -155,13 +155,18 @@
                             {{-- Talebi gönderen kullanıcının id'si user_id olarak atanacak --}}
                             {{-- Yeni oluşturulacak bu tweet'in id'si otomatik olarak tanımlanıp content'i validate edilecek --}}
                             {{-- Sonrasında bu yeni tweet parent_id'ye sahip olan bir tweet olarak kaydedilecek. --}}
-                            
+
                             <span class="mr-8"><a href="#"
                                     class="text-grey-dark hover:no-underline hover:text-blue-light"><i
                                         class="fa fa-comment fa-lg mr-2"></i> 9</a></span>
 
+                            {{-- Retweet --}}
+
                             <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-green"><i
                                         class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
+
+                            {{-- Like --}}
+                            
                             <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-red"><i
                                         class="fa fa-heart fa-lg mr-2"></i> 135</a></span>
 

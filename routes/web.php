@@ -34,8 +34,6 @@ Route::get('tweets/{tweet}/retweet', [TweetController::class, 'retweet'])->name(
 Route::get('tweets/{tweet}/unretweet', [TweetController::class, 'unretweet'])->name('tweets.unretweet');
 Route::get('tweets/{tweet}/favorite', [TweetController::class, 'favorite'])->name('tweets.favorite');
 Route::get('tweets/{tweet}/unfavorite', [TweetController::class, 'unfavorite'])->name('tweets.unfavorite');
-/* Route::get('tweets/homepage', [TweetController::class, 'homepage'])->name('tweets.homepage');  Çalışmıyor*/ 
-Route::get('tweets/user_profile', [TweetController::class, 'user_profile'])->name('user_profile');
 
 Route::get('/dashboard', function () {
     $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
