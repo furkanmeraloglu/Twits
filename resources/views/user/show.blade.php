@@ -124,7 +124,17 @@
                     <div class="pb-2">
                         <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-blue-light"><i class="fa fa-comment fa-lg mr-2"></i> 9</a></span>
                         <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-green"><i class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
-                        <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-red"><i class="fa fa-heart fa-lg mr-2"></i> 135</a></span>
+                        @if($tweet->isLikedby(Auth::user()))
+                            <span class="mr-8"><a href="{{ route('tweets.unlike', $tweet) }}" class="text-grey-dark hover:no-underline hover:text-red"><i
+                                class="fa fa-heart fa-lg mr-2 text-red-700"></i><a href="{{route('tweets.likers', $tweet)}}"> {{ $tweet->likers()->count() }}</a></a></span>
+                            @else
+                            <span class="mr-8"><a href="{{ route('tweets.like', $tweet) }}" class="text-grey-dark hover:no-underline hover:text-red"><i
+                                @if($tweet->likers()->count() > 0)
+                                class="fa fa-heart fa-lg mr-2"></i><a href="{{route('tweets.likers', $tweet)}}">{{ $tweet->likers()->count() }}</a></a></span>
+                                @else
+                                class="fa fa-heart fa-lg mr-2"></i>0</a></span>
+                                @endif
+                            @endif
                         
                     </div>
                 </div>
