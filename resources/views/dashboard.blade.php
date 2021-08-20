@@ -23,7 +23,8 @@
             <div class="w-full lg:w-1/2">
                 <ul class="list-reset flex">
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent border-teal">
-                        <a href="{{ route('tweets.index') }}" class="text-grey-darker no-underline hover:no-underline">
+                        <a href="{{ route('tweets.index') }}"
+                            class="text-grey-darker no-underline hover:no-underline">
                             <div class="text-sm font-bold tracking-tight mb-1">Tweets</div>
                             <div class="text-lg tracking-tight font-bold text-teal">
                                 {{ Auth::user()->tweets()->count() }}</div>
@@ -68,8 +69,8 @@
         <div class="w-full lg:w-1/4 pl-4 lg:pl-0 pr-6 mt-8 mb-4">
             <h1><a href="#" class="text-black font-bold no-underline hover:underline">{{ Auth::user()->name }}</a>
             </h1>
-            <div class="mb-4"><a href="#"
-                    class="text-grey-darker no-underline hover:underline">@  {{ Auth::user()->nickname }} </a></div>
+            <div class="mb-4"><a href="#" class="text-grey-darker no-underline hover:underline">@
+                    {{ Auth::user()->nickname }} </a></div>
 
             <div class="mb-4">
                 {{ Auth::user()->bio }}
@@ -101,16 +102,16 @@
 
             {{-- Tweet section --}}
 
-                 <form action="{{ route('tweets.store') }}" method="POST">
-                 @csrf
+            <form action="{{ route('tweets.store') }}" method="POST">
+                @csrf
                 <div class="form-group">
                     <textarea id="tweet" name="content" class="w-full pt-5 resize-none border rounded-md"></textarea>
-                <button type="submit"
-                            class="inline-flex items-center h-10 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-500">
-                                Tweet!
-                            </button>
+                    <button type="submit"
+                        class="inline-flex items-center h-10 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-500">
+                        Tweet!
+                    </button>
                 </div>
-                </form>
+            </form>
 
             {{-- Tweet section end --}}
 
@@ -150,9 +151,15 @@
                         </div>
 
                         <div class="pb-2">
+                            {{-- Foreach içerisinde dönen tweet'in id'si controller'da parent_id olarak atanaca --}}
+                            {{-- Talebi gönderen kullanıcının id'si user_id olarak atanacak --}}
+                            {{-- Yeni oluşturulacak bu tweet'in id'si otomatik olarak tanımlanıp content'i validate edilecek --}}
+                            {{-- Sonrasında bu yeni tweet parent_id'ye sahip olan bir tweet olarak kaydedilecek. --}}
+                            
                             <span class="mr-8"><a href="#"
                                     class="text-grey-dark hover:no-underline hover:text-blue-light"><i
                                         class="fa fa-comment fa-lg mr-2"></i> 9</a></span>
+
                             <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-green"><i
                                         class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
                             <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-red"><i

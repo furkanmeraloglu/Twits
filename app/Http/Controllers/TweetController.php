@@ -56,6 +56,27 @@ class TweetController extends Controller
         return redirect()->route('dashboard');
     }
 
+    // Comment
+
+    public function comment(Request $request, Tweet $tweet)
+    {
+        $request->validate([
+            'content' => 'required|max:240',
+        ]);
+
+        $comment = new Tweet;
+        $comment->parent_id = $tweet->id;
+        $comment->user_id = $request->user()->id;
+        $comment->content = $request->content;
+
+        $comment->save();
+
+        $comment->set_hashtags($comment->diverge_tags_from_content($comment->content));   // Tweet'in taglerini kaydediyoruz.
+        $request->user()->profile_feed()->attach($comment);                               // Atılan tweet'i kullanıcının feed'ine de ekliyoruz.
+
+        return redirect('/dashboard');
+    }
+
     // Giriş yapmış kullanıcının başka kullanıcının tweet'ini rt etmesi durumunda rt edilen tweetin rt eden kullanıcının feed'ine eklenmesi gerekiyor.
     // Bunu yapmak için de öncelikle rt eden kullanıcının id'si, rt edilen tweet'in id'si ve rt edilen tweet'in sahibinin id'si gerekiyor.
     // bu dataları ise database'e eklemek gerekiyor.
@@ -77,9 +98,9 @@ class TweetController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         $user = Auth::user();
-        $tweets = Tweet::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();         
+        $tweets = Tweet::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
         $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
 
         return view('dashboard', compact('tweets', 'users'));
@@ -104,7 +125,7 @@ class TweetController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'content' => 'required|max:140',
+            'content' => 'required|max:240',
         ]);
 
         $tweet = new Tweet;
