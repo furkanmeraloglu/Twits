@@ -90,30 +90,32 @@ class UserController extends Controller
     {
         $request->validate([
             'bio' => 'nullable|string|min:10',
-            'nickname' => 'required|string|max:30',
+            'nickname' => 'nullable|string|max:30',
             'website' => 'nullable',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'bgimg' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
-        $img = $request->file('avatar');
-        $bgimg = $request->file('bgimg');
-
-        $newAvatarName = uniqid() . '.' . $request->nickname . '.' . $img->getClientOriginalExtension();
-        $newBgimgName = uniqid() . '.' . $request->nickname . '.' . $bgimg->getClientOriginalExtension();
-
         $destinationPath = public_path('images');
 
-        $img->move($destinationPath, $newAvatarName);
-        $bgimg->move($destinationPath, $newBgimgName);
-
-        $user->nickname = $request->nickname;
-        $user->bio = $request->bio;
-        $user->website = $request->website;
-        $user->image_path = $newAvatarName;
-        $user->bg_image_path = $newBgimgName;
-
-        $user->save();
+        if($request->hasFile('avatar')){
+            $img = $request->file('avatar');
+            $newAvatarName = uniqid() . '.' . $request->nickname . '.' . $img->getClientOriginalExtension();
+            $img->move($destinationPath, $newAvatarName);
+            $user->image_path = $newAvatarName;
+        }elseif($request->hasFile('bgimg')){
+            $bgimg = $request->file('bgimg');
+            $newBgimgName = uniqid() . '.' . $request->nickname . '.' . $bgimg->getClientOriginalExtension();
+            $bgimg->move($destinationPath, $newBgimgName);
+            $user->bg_image_path = $newBgimgName;
+        }elseif($request->bio != null){
+            $user->bio = $request->bio;
+        }elseif($request->nickname != null){
+            $user->nickname = $request->nickname;
+        }elseif($request->website != null){
+            $user->website = $request->website;
+        }
+            $user->save();
 
         return redirect()->route('dashboard');
     }
