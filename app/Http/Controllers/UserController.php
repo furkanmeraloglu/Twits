@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Tweet;
 
 class UserController extends Controller
 {
@@ -73,7 +74,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $users = User::where('id', '!=', $user->id)->simplePaginate(5);
+        $tweets = Tweet::all();
+        return view('user.edit', compact('user', 'tweets', 'users'));
     }
 
     /**

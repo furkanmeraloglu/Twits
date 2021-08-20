@@ -16,14 +16,15 @@
                     <img src="https://source.unsplash.com/400x400" alt="logo"
                         class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
                 @else
-                    <img src="{{ './images/' . Auth::user()->image_path }}" alt="logo"
+                    <img src="{{ 'images/' . Auth::user()->image_path }}" alt="logo"
                         class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
                 @endif
             </div>
             <div class="w-full lg:w-1/2">
                 <ul class="list-reset flex">
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent border-teal">
-                        <a href="{{ route('tweets.index') }}" class="text-grey-darker no-underline hover:no-underline">
+                        <a href="{{ route('tweets.index') }}"
+                            class="text-grey-darker no-underline hover:no-underline">
                             <div class="text-sm font-bold tracking-tight mb-1">Tweets</div>
                             <div class="text-lg tracking-tight font-bold text-teal">
                                 {{ Auth::user()->tweets()->count() }}</div>
@@ -69,7 +70,7 @@
             <h1><a href="#" class="text-black font-bold no-underline hover:underline">{{ Auth::user()->name }}</a>
             </h1>
             <div class="mb-4"><a href="#"
-                    class="text-grey-darker no-underline hover:underline">@  {{ Auth::user()->nickname }} </a></div>
+                    class="text-grey-darker no-underline hover:underline">@ {{ Auth::user()->nickname }}</a></div>
 
             <div class="mb-4">
                 {{ Auth::user()->bio }}
@@ -99,77 +100,56 @@
                 <a href="#" class="mr-6 text-teal no-underline hover:underline">Retweets</a>
             </div>
 
-            {{-- Tweet section --}}
 
-                 <form action="{{ route('tweets.store') }}" method="POST">
-                 @csrf
-                <div class="form-group">
-                    <textarea id="tweet" name="content" class="w-full pt-5 resize-none border rounded-md"></textarea>
-                <button type="submit"
-                            class="inline-flex items-center h-10 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-500">
-                                Tweet!
-                            </button>
-                </div>
-                </form>
+            {{-- Edit section --}}
+            <form action="{{ route('users.update', $user) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="mt-6 ">
+                    <div class="items-center -mx-2 md:flex">
+                        <div class="w-full mx-2">
+                            <label for="nickname"
+                                class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Nickname</label>
 
-            {{-- Tweet section end --}}
-
-            {{-- tweet card --}}
-
-            @foreach ($tweets as $tweet)
-
-                <div class="flex border-b border-solid border-grey-light">
-                    <div class="w-1/8 text-right pl-3 pt-3">
-                        @if ($tweet->user->image_path === null)
-                            <div><a href="#"><img src="https://source.unsplash.com/400x400" alt="avatar"
-                                        class="rounded-full h-12 w-12 mr-2"></a></div>
-                        @else
-                            <div><a href="#"><img src="{{ 'images/' . $tweet->user->image_path }}" alt="avatar"
-                                        class="rounded-full h-12 w-12 mr-2"></a></div>
-                        @endif
-                    </div>
-                    <div class="w-7/8 p-3 pl-0">
-
-                        <div class="flex justify-between">
-                            <div>
-                                <span class="font-bold"><a href="#"
-                                        class="text-black">{{ $tweet->user->name }}</a></span>
-                                <span class="text-grey-dark">@ {{ $tweet->user->nickname }}</span>
-
-                                <span class="text-grey-dark">{{ $tweet->created_at }}</span>
-                            </div>
-
+                            <input name="nickname"
+                                class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                                type="text">
                         </div>
 
-                        <div>
-                            <div class="mb-4">
+                        <div class="w-full mx-2 mt-4 md:mt-0">
+                            <label for="website"
+                                class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Web
+                                Address</label>
 
-                                <p class="mb-6">{{ $tweet->content }}</p>
-
-                            </div>
-                        </div>
-
-                        <div class="pb-2">
-                            <span class="mr-8"><a href="#"
-                                    class="text-grey-dark hover:no-underline hover:text-blue-light"><i
-                                        class="fa fa-comment fa-lg mr-2"></i> 9</a></span>
-                            <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-green"><i
-                                        class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
-                            <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-red"><i
-                                        class="fa fa-heart fa-lg mr-2"></i> 135</a></span>
-
+                            <input name="website"
+                                class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                                type="text">
                         </div>
                     </div>
+
+                    <div class="w-full mt-4">
+                        <label for="bio"
+                            class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Bio</label>
+
+                        <textarea name="bio"
+                            class="resize-none block w-full h-40 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
+                    </div>
+                    <div class="pt-5">
+                        <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Avatar</label>
+                        <input type="file" class="form-control-file" id="file_avatar" name="avatar" accept="image/*">
+                    </div>
+                    <div class="pt-5">
+                        <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Background
+                            Image</label>
+                        <input type="file" class="form-control-file" id="file_bg" name="bgimg" accept="image/*">
+                    </div>
+                    <div class="flex justify-center mt-6">
+                        <button type="submit"
+                            class="px-4 py-2 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Update</button>
+                    </div>
                 </div>
-
-                {{-- tweet card end --}}
-            @endforeach
-
-
-
-
-
-
+            </form>
+            {{-- Edit Section end --}}
         </div>
 
         @include('layouts.rightmenu')
@@ -177,4 +157,5 @@
     </div>
 
     </body>
+
 </x-app-layout>

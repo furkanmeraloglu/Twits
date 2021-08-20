@@ -28,3 +28,58 @@
         </x-slot>
     </x-dropdown>
 </div>
+
+
+
+<form method="POST" action="{{ route('logout') }}">
+    @csrf
+
+    <a href="route('logout')"
+    onclick="event.preventDefault();
+                this.closest('form').submit();">{{ __('Log Out') }}</a> 
+
+
+
+
+
+
+{{-- rtweeted tweet card --}}
+
+<div class="flex border-b border-solid border-grey-light">
+
+    <div class="w-1/8 text-right pl-3 pt-3">
+        <div><i class="fa fa-retweet text-grey-dark mr-2"></i></div>
+        <div><a href="#"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/tt_avatar_adam.jpg" alt="avatar" class="rounded-full h-12 w-12 mr-2"></a></div>
+    </div>
+
+    <div class="w-7/8 p-3 pl-0">
+        <div class="text-xs text-grey-dark">Tailwind CSS Retweeted</div>
+        <div class="flex justify-between">
+            <div>
+                <span class="font-bold"><a href="#" class="text-black">Adam Wathan</a></span>
+                <span class="text-grey-dark">@adamwathan</span>
+                <span class="text-grey-dark">&middot;</span>
+                <span class="text-grey-dark">7 Dec 2017</span>
+            </div>
+            <div>
+                <a href="#" class="text-grey-dark hover:text-teal"><i class="fa fa-chevron-down"></i></a>
+            </div>
+        </div>
+        <div>
+            <div class="mb-4">
+                <p class="mb-6">💥 Check out this Slack clone built with <a href="#" class="text-teal">@tailwindcss</a> using no custom CSS and just the default configuration:</p>
+                <p class="mb-4"><a href="#" class="text-teal">https://codepen.io/adamwathan/pen/JOQWVa...</a></p>
+                <p class="mb-6">(based on some work <a href="#" class="text-teal">@Killgt</a> started for <a href="#" class="text-teal">tailwindcomponents.com</a> !)</p>
+                <p><a href="#"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/tt_tweet2.jpg" alt="tweet image" class="border border-solid border-grey-light rounded-sm"></a></p>
+            </div>
+            <div class="pb-2">
+                <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-blue-light"><i class="fa fa-comment fa-lg mr-2"></i> 19</a></span>
+                <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-green"><i class="fa fa-retweet fa-lg mr-2"></i> 56</a></span>
+                <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-red"><i class="fa fa-heart fa-lg mr-2"></i> 247</a></span>
+                <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-teal"><i class="fa fa-envelope fa-lg mr-2"></i></a></span>
+            </div>
+
+            <div><a href="#" class="text-teal">Show this thread</a></div>
+        </div>
+    </div>
+</div>
