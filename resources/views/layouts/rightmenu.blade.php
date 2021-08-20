@@ -13,7 +13,7 @@
                                     class="rounded-full h-12 w-12 mr-2"></a></div>
                     @else
                         <div><a href="{{ route('users.show', $user) }}"><img
-                                    src="{{ 'images/' . $user->image_path }}" alt="avatar"
+                                    src="{{ asset('images/' . $user->image_path) }}" alt="avatar"
                                     class="rounded-full h-12 w-12 mr-2"></a></div>
                     @endif
                 </div>

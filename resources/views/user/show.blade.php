@@ -3,7 +3,7 @@
     @if($user->bg_image_path === null)
     <div class="hero h-64 bg-cover h-112 full" style="background-image: url(https://source.unsplash.com/1500x500)"> </div>
     @else
-    <div class="hero h-64 bg-cover h-112 full" style="background-image: url({{ 'images/' . $user->bg_image_path }})"> </div>
+    <div class="hero h-64 bg-cover h-112 full" style="background-image: url({{ asset('images/' . $user->bg_image_path) }})"> </div>
     @endif
 
     <div class="bg-white shadow">
@@ -13,7 +13,7 @@
                 @if($user->image_path === null)
                 <img src="https://source.unsplash.com/400x400" alt="logo" class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
                 @else
-                <img src="{{ 'images/' . $user->image_path }}" alt="logo" class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
+                <img src="{{ asset('images/' . $user->image_path) }}" alt="logo" class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
                 @endif
             </div>
             <div class="w-full lg:w-1/2">
@@ -25,14 +25,14 @@
                         </a>
                     </li>
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent hover:border-teal">
-                        <a href="#" class="text-grey-darker no-underline hover:no-underline">
-                            <div class="text-sm font-bold tracking-tight mb-1"><a href="{{ route('users.followings', $user) }}">Following</a> </div>
+                        <a href="{{ route('users.followings', $user) }}" class="text-grey-darker no-underline hover:no-underline">
+                            <div class="text-sm font-bold tracking-tight mb-1">Following</div>
                             <div class="text-lg tracking-tight font-bold hover:text-teal">{{$user->followings()->count()}}</div>
                         </a>
                     </li>
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent hover:border-teal">
-                        <a href="#" class="text-grey-darker no-underline hover:no-underline">
-                            <div class="text-sm font-bold tracking-tight mb-1"><a href="{{ route('users.followers', $user) }}">Followers</a></div>
+                        <a href="{{ route('users.followers', $user) }}" class="text-grey-darker no-underline hover:no-underline">
+                            <div class="text-sm font-bold tracking-tight mb-1">Followers</div>
                             <div class="text-lg tracking-tight font-bold hover:text-teal">{{$user->followers()->count()}}</div>
                         </a>
                     </li>
@@ -98,7 +98,7 @@
                     @if($tweet->user->image_path === null)
                     <div><a href="#"><img src="https://source.unsplash.com/400x400" alt="avatar" class="rounded-full h-12 w-12 mr-2"></a></div>
                     @else
-                    <div><a href="#"><img src="{{ 'images/' . $user->image_path }}" alt="avatar" class="rounded-full h-12 w-12 mr-2"></a></div>
+                    <div><a href="#"><img src="{{ asset('images/' . $user->image_path) }}" alt="avatar" class="rounded-full h-12 w-12 mr-2"></a></div>
                     @endif
                 </div>
                 <div class="w-7/8 p-3 pl-0">
