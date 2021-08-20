@@ -20,12 +20,11 @@ class TweetController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function likers(Tweet $tweet){
-
+    public function likers(Tweet $tweet)
+    {
         $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
         $likers = $tweet->likers()->get()->except(auth()->id());
         return view('tweet.likers', compact('likers', 'users'));
-
     }
 
     public function unlike(Request $request, Tweet $tweet)
@@ -46,6 +45,12 @@ class TweetController extends Controller
         return redirect()->route('dashboard');
     }
 
+    public function getFavorite(Request $request)
+    {
+        $favorites = $request->user()->getFavoriteItems(Tweet::class)->orderBy('created_at', 'DESC');
+        return view('tweet.favorites', compact('favorites'));
+    }
+
     // Comment
 
     public function comment(Request $request, Tweet $tweet)
@@ -53,17 +58,13 @@ class TweetController extends Controller
         $request->validate([
             'content' => 'required|max:240',
         ]);
-
         $comment = new Tweet;
         $comment->parent_id = $tweet->id;
         $comment->user_id = $request->user()->id;
         $comment->content = $request->content;
-
         $comment->save();
-
         $comment->set_hashtags($comment->diverge_tags_from_content($comment->content));   // Tweet'in taglerini kaydediyoruz.
         $request->user()->profile_feed()->attach($comment);                               // Atılan tweet'i kullanıcının feed'ine de ekliyoruz.
-
         return redirect('/dashboard');
     }
 

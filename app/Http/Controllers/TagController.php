@@ -47,7 +47,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        $tagTweets = $tag->tweets()->orderbY($tag->tweets()->likes()->count, 'DESC')->get();
+        $tagTweets = $tag->tweets()->orderbY($tag->tweets()->likers()->count(), 'DESC')->get();
         return view ('tag.show', compact('tagTweets'));
     }
 
