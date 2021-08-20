@@ -14,7 +14,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::all();
+        return view ('tag.index', compact('tags'));
     }
 
     /**
@@ -46,7 +47,8 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        $tagTweets = $tag->tweets()->orderbY($tag->tweets()->likes()->count, 'DESC')->get();
+        return view ('tag.show', compact('tagTweets'));
     }
 
     /**
