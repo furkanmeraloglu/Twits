@@ -96,10 +96,10 @@
 
             <div class="p-3 text-lg font-bold border-b border-solid border-grey-light">
                 <h1 class="text-black mr-6 no-underline hover-underline">{{$user->name}} 's Followings</h1>
-                
+
             </div>
 
-            
+
 
             {{-- User card --}}
 
@@ -119,7 +119,7 @@
 
                         <div class="flex justify-between">
                             <div>
-                                <span class="font-bold"><a href="#"
+                                <span class="font-bold"><a href="{{ route('users.show', $following) }}"
                                         class="text-black">{{ $following->name }}</a></span>
                                 <span class="text-grey-dark">@ {{ $following->nickname }}</span>
 
