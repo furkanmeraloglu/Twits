@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
     {
         if(Tag::count() != 0)
         {
-            return view ('layouts.rightmenu', Tag::get()->paginate(5));
+            return view ('layouts.rightmenu', Tag::paginate(5));
         }
     }
 }
