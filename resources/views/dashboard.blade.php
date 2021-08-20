@@ -32,14 +32,14 @@
                     </li>
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent hover:border-teal">
                         <a href="#" class="text-grey-darker no-underline hover:no-underline">
-                            <div class="text-sm font-bold tracking-tight mb-1">Following</div>
+                            <div class="text-sm font-bold tracking-tight mb-1"> <a href="{{route('users.followings', Auth::user())}}">Following</a> </div>
                             <div class="text-lg tracking-tight font-bold hover:text-teal">
                                 {{ Auth::user()->followings()->count() }}</div>
                         </a>
                     </li>
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent hover:border-teal">
                         <a href="#" class="text-grey-darker no-underline hover:no-underline">
-                            <div class="text-sm font-bold tracking-tight mb-1">Followers</div>
+                            <div class="text-sm font-bold tracking-tight mb-1"><a href="{{ route('users.followers', Auth::user()) }}">Followers</a></div>
                             <div class="text-lg tracking-tight font-bold hover:text-teal">
                                 {{ Auth::user()->followers()->count() }}</div>
                         </a>
