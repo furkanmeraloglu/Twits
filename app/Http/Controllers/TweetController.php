@@ -20,6 +20,14 @@ class TweetController extends Controller
         return redirect()->route('dashboard');
     }
 
+    public function likers(Tweet $tweet){
+
+        $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
+        $likers = $tweet->likers()->get()->except(auth()->id());
+        return view('tweet.likers', compact('likers', 'users'));
+
+    }
+
     public function unlike(Request $request, Tweet $tweet)
     {
         $request->user()->unlike($tweet);

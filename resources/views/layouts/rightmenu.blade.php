@@ -1,7 +1,7 @@
 <div class="w-full lg:w-1/4 pl-4">
     <div class="bg-white p-3 mb-3">
         <div>
-            <span class="text-lg font-bold">Who to follow</span>
+            <span class="text-lg font-bold"><a href="{{ route('users.index') }}">Who to follow</a></span>
 
         </div>
         @foreach ($users as $user)

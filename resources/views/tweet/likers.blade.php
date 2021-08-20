@@ -95,37 +95,23 @@
         <div class="w-full lg:w-1/2 bg-white mb-4">
 
             <div class="p-3 text-lg font-bold border-b border-solid border-grey-light">
-                <a href="{{ route('tweets.index') }}" class="text-black mr-6 no-underline hover-underline">Tweets</a>
-                <a href="#" class="mr-6 text-teal no-underline hover:underline">Tweets &amp; Replies</a>
-                <a href="#" class="mr-6 text-teal no-underline hover:underline">Retweets</a>
+                <h1 class="text-black mr-6 no-underline hover-underline">Likers</h1>
+                
             </div>
 
-            {{-- Tweet section --}}
+            
 
-            <form action="{{ route('tweets.store') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <textarea id="tweet" name="content" class="w-full pt-5 resize-none border rounded-md"></textarea>
-                    <button type="submit"
-                        class="inline-flex items-center h-10 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-500">
-                        Tweet!
-                    </button>
-                </div>
-            </form>
+            {{-- User card --}}
 
-            {{-- Tweet section end --}}
-
-            {{-- tweet card --}}
-
-            @foreach ($tweets as $tweet)
+            @foreach ($likers as $liker)
 
                 <div class="flex border-b border-solid border-grey-light">
                     <div class="w-1/8 text-right pl-3 pt-3">
-                        @if ($tweet->user->image_path === null)
+                        @if ($liker->image_path === null)
                             <div><a href="#"><img src="https://source.unsplash.com/400x400" alt="avatar"
                                         class="rounded-full h-12 w-12 mr-2"></a></div>
                         @else
-                            <div><a href="#"><img src="{{ 'images/' . $tweet->user->image_path }}" alt="avatar"
+                            <div><a href="#"><img src="{{ 'images/' . $liker->image_path }}" alt="avatar"
                                         class="rounded-full h-12 w-12 mr-2"></a></div>
                         @endif
                     </div>
@@ -134,10 +120,10 @@
                         <div class="flex justify-between">
                             <div>
                                 <span class="font-bold"><a href="#"
-                                        class="text-black">{{ $tweet->user->name }}</a></span>
-                                <span class="text-grey-dark">@ {{ $tweet->user->nickname }}</span>
+                                        class="text-black">{{ $liker->name }}</a></span>
+                                <span class="text-grey-dark">@ {{ $liker->nickname }}</span>
 
-                                <span class="text-grey-dark">{{ $tweet->created_at }}</span>
+                                <span class="text-grey-dark">{{ $liker->created_at }}</span>
                             </div>
 
                         </div>
@@ -145,45 +131,31 @@
                         <div>
                             <div class="mb-4">
 
-                                <p class="mb-6">{{ $tweet->content }}</p>
+                                <p class="mb-6">{{ $liker->bio }}</p>
 
                             </div>
                         </div>
 
                         <div class="pb-2">
-                            {{-- Foreach içerisinde dönen tweet'in id'si controller'da parent_id olarak atanaca --}}
-                            {{-- Talebi gönderen kullanıcının id'si user_id olarak atanacak --}}
-                            {{-- Yeni oluşturulacak bu tweet'in id'si otomatik olarak tanımlanıp content'i validate edilecek --}}
-                            {{-- Sonrasında bu yeni tweet parent_id'ye sahip olan bir tweet olarak kaydedilecek. --}}
-
-                            <span class="mr-8"><a href="#"
-                                    class="text-grey-dark hover:no-underline hover:text-blue-light"><i
-                                        class="fa fa-comment fa-lg mr-2"></i> 9</a></span>
-
-                            {{-- Retweet --}}
-
-                            <span class="mr-8"><a href="#" class="text-grey-dark hover:no-underline hover:text-green"><i
-                                        class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
-
-                            {{-- Like --}}
-                            
-                            @if($tweet->isLikedby(Auth::user()))
-                            <span class="mr-8"><a href="{{ route('tweets.unlike', $tweet) }}" class="text-grey-dark hover:no-underline hover:text-red"><i
-                                class="fa fa-heart fa-lg mr-2 text-red-700"></i><a href="{{route('tweets.likers', $tweet)}}"> {{ $tweet->likers()->count() }}</a></a></span>
-                            @else
-                            <span class="mr-8"><a href="{{ route('tweets.like', $tweet) }}" class="text-grey-dark hover:no-underline hover:text-red"><i
-                                @if($tweet->likers()->count() > 0)
-                                class="fa fa-heart fa-lg mr-2"></i><a href="{{route('tweets.likers', $tweet)}}">{{ $tweet->likers()->count() }}</a></a></span>
+                            <div>
+                                @if (Auth::user()->isFollowing($liker->id))
+                                    <a href="{{ route('users.unfollow', $liker) }}"
+                                    class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-500">
+                                        Unfollow
+                                    </a>
                                 @else
-                                class="fa fa-heart fa-lg mr-2"></i>0</a></span>
+                                    <a href="{{ route('users.follow', $liker) }}"
+                                    class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-500">
+                                        Follow
+                                    </a>
                                 @endif
-                            @endif
+                            </div>
 
                         </div>
                     </div>
                 </div>
 
-                {{-- tweet card end --}}
+                {{-- User card end --}}
             @endforeach
 
 

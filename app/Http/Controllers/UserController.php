@@ -29,7 +29,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
+        $usersIndex = User::all()->except(auth()->id());
+        return view('user.index', compact('usersIndex', 'users'));
     }
 
     /**
