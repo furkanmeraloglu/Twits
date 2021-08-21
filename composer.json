@@ -13,7 +13,8 @@
         "laravel/tinker": "^2.5",
         "overtrue/laravel-favorite": "^4.0",
         "overtrue/laravel-follow": "^3.0",
-        "overtrue/laravel-like": "^4.0"
+        "overtrue/laravel-like": "^4.0",
+        "spatie/laravel-query-builder": "^3.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
