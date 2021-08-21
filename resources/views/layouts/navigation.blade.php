@@ -1,22 +1,28 @@
 <nav class="w-full lg:w-2/5">
     <a href=" {{ route('dashboard') }} "
-        class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline"><i
-            class="fa fa-home fa-lg"></i> Home</a>
+        class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline">
+        <span style="font-size: 15px; color: Dodgerblue;">
+        <i class="fa fa-home fa-lg"></span></i> Home</a>
     <a href="#"
-        class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline"><i
-            class="fa fa-globe-europe fa-lg"></i> Explore </a>
+        class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline">
+        <span style="font-size: 15px; color: Dodgerblue;">
+        <i class="fa fa-globe-europe fa-lg"></span></i> Explore </a>
     <a href="#"
-        class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline"><i
-            class="fa fa-bell fa-lg"></i> Notifications</a>
+        class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline">
+        <span style="font-size: 15px; color: Dodgerblue;">
+        <i class="fa fa-bell fa-lg"></span></i> Notifications</a>
     <a href="#"
-        class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline"><i
-            class="fa fa-bookmark fa-lg"></i> Bookmarks </a>
+        class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline">
+        <span style="font-size: 15px; color: Dodgerblue;">
+        <i class="fa fa-bookmark fa-lg"></span></i> Bookmarks </a>
     <a href="https://quickabdest.com/"
-        class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline"><i
-            class="fa fa-life-ring fa-lg"></i> Help Center </a>
+        class="color-text-white text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline">
+        <span style="font-size: 15px; color: Dodgerblue;">
+            <i class="fa fa-life-ring fa-lg"></span></i> Help Center </a>
+
 
 </nav>
-<div class="w-full lg:w-1/5 text-center my-4 lg:my-0"><a href="#"><i class="fa fa-twitter fa-lg text-blue"></i></a>
+<div class="w-full lg:w-1/5 text-center my-4 lg:my-0"><a href="#"><span style="font-size: 31px; color: Dodgerblue;"><i class="fa fa-twitter fa-lg text-blue"></span></i></a>
 </div>
 <div class="w-full lg:w-2/5 flex lg:justify-end">
     <div class="mr-4 relative">
