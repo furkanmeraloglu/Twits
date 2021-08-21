@@ -119,16 +119,20 @@ class UserController extends Controller
             $newAvatarName = uniqid() . '.' . $request->nickname . '.' . $img->getClientOriginalExtension();
             $img->move($destinationPath, $newAvatarName);
             $user->image_path = $newAvatarName;
-        }elseif($request->hasFile('bgimg')){
+        }
+        if($request->hasFile('bgimg')){
             $bgimg = $request->file('bgimg');
             $newBgimgName = uniqid() . '.' . $request->nickname . '.' . $bgimg->getClientOriginalExtension();
             $bgimg->move($destinationPath, $newBgimgName);
             $user->bg_image_path = $newBgimgName;
-        }elseif($request->bio != null){
+        }
+        if($request->bio != null){
             $user->bio = $request->bio;
-        }elseif($request->nickname != null){
+        }
+        if($request->nickname != null){
             $user->nickname = $request->nickname;
-        }elseif($request->website != null){
+        }
+        if($request->website != null){
             $user->website = $request->website;
         }
             $user->save();
