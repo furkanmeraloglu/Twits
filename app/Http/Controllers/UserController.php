@@ -112,6 +112,11 @@ class UserController extends Controller
             'bgimg' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
+            if($request->bio != null){$user->bio = $request->bio;}
+            if($request->nickname != null){$user->nickname = $request->nickname;} 
+            if($request->website != null){$user->website = $request->website;}
+            
+
         $destinationPath = public_path('images');
 
         if($request->hasFile('avatar')){
@@ -119,22 +124,14 @@ class UserController extends Controller
             $newAvatarName = uniqid() . '.' . $request->nickname . '.' . $img->getClientOriginalExtension();
             $img->move($destinationPath, $newAvatarName);
             $user->image_path = $newAvatarName;
-        }
-        if($request->hasFile('bgimg')){
+            
+        }elseif($request->hasFile('bgimg')){
             $bgimg = $request->file('bgimg');
             $newBgimgName = uniqid() . '.' . $request->nickname . '.' . $bgimg->getClientOriginalExtension();
             $bgimg->move($destinationPath, $newBgimgName);
             $user->bg_image_path = $newBgimgName;
         }
-        if($request->bio != null){
-            $user->bio = $request->bio;
-        }
-        if($request->nickname != null){
-            $user->nickname = $request->nickname;
-        }
-        if($request->website != null){
-            $user->website = $request->website;
-        }
+       
             $user->save();
 
         return redirect()->route('dashboard');
