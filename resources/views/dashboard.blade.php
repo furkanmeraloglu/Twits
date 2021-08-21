@@ -156,7 +156,7 @@
                             {{-- Yeni oluşturulacak bu tweet'in id'si otomatik olarak tanımlanıp content'i validate edilecek --}}
                             {{-- Sonrasında bu yeni tweet parent_id'ye sahip olan bir tweet olarak kaydedilecek. --}}
 
-                            <span class="mr-8"><a href="#"
+                            <span class="mr-8"><a href="{{ route('tweets.create', $tweet) }}"
                                     class="text-grey-dark hover:no-underline hover:text-blue-light"><i
                                         class="fa fa-comment fa-lg mr-2"></i> 9</a></span>
 
@@ -166,7 +166,7 @@
                                         class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
 
                             {{-- Like --}}
-                            
+
                             @if($tweet->isLikedby(Auth::user()))
                             <span class="mr-8"><a href="{{ route('tweets.unlike', $tweet) }}" class="text-grey-dark hover:no-underline hover:text-red"><i
                                 class="fa fa-heart fa-lg mr-2 text-red-700"></i><a href="{{route('tweets.likers', $tweet)}}"> {{ $tweet->likers()->count() }}</a></a></span>

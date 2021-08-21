@@ -22,7 +22,7 @@ class TagFactory extends Factory
     public function definition()
     {
         return [
-            'hashtag' => $this->faker->unique()->word(),
+            'hashtag' => '#' . $this->faker->unique()->word()
         ];
     }
 }

@@ -8,7 +8,7 @@ use App\Models\Tweet;
 
 class UserController extends Controller
 {
-    // Resource dışında eklenen metotların rotasının verilip verilmediği web.php'den kontrol et. 
+    // Resource dışında eklenen metotların rotasının verilip verilmediği web.php'den kontrol et.
 
     public function follow(Request $request, User $user)
     {
@@ -22,17 +22,15 @@ class UserController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function followers(User $user){
-
-        
+    public function followers(User $user)
+    {
         $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
         $followers = $user->followers()->get();
         return view('user.followers', compact('users', 'followers', 'user'));
     }
 
-    public function followings(User $user){
-
-        
+    public function followings(User $user)
+    {
         $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
         $followings = $user->followings()->get();
         return view('user.followings', compact('users', 'followings', 'user'));
