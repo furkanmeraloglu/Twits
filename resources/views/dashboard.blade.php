@@ -106,10 +106,13 @@
                 @csrf
                 <div class="form-group">
                     <textarea id="tweet" name="content" class="w-full pt-5 resize-none border rounded-md"></textarea>
-                    <button type="submit"
+                    <div class="flex">
+                    <button id="tweet_button" type="submit"
                         class="inline-flex items-center h-10 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-500">
                         Tweet!
                     </button>
+                    <p id="tweet_counter" class="text-xs text-gray-600">0</p>
+                    </div>
                 </div>
             </form>
 
