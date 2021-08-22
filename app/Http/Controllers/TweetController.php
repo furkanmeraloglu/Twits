@@ -45,10 +45,11 @@ class TweetController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function getFavorite(Request $request)
+    public function getFavorites(User $user)
     {
-        $favorites = $request->user()->getFavoriteItems(Tweet::class)->orderBy('created_at', 'DESC');
-        return view('tweet.favorites', compact('favorites'));
+        $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
+        $favorites = $user->getFavoriteItems(Tweet::class)->get();
+        return view('tweet.favorites', compact('favorites', 'user', 'users'));
     }
 
     // Comment

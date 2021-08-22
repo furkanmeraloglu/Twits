@@ -38,7 +38,7 @@ Route::get('tweets/{tweet}/unretweet', [TweetController::class, 'unretweet'])->n
 Route::get('tweets/{tweet}/favorite', [TweetController::class, 'favorite'])->name('tweets.favorite');
 Route::get('tweets/{tweet}/unfavorite', [TweetController::class, 'unfavorite'])->name('tweets.unfavorite');
 Route::get('tweets/{tweet}/likers', [TweetController::class, 'likers'])->name('tweets.likers');
-Route::get('tweets/getFavorites', [TweetController::class, 'getFavorites'])->name('tweets.getFavorites');
+Route::get('tweets/{user}/getFavorites', [TweetController::class, 'getFavorites'])->name('tweets.getFavorites');
 
 Route::get('/dashboard', function () {
     $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
