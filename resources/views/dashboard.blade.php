@@ -166,12 +166,26 @@
                                     class="text-grey-dark hover:no-underline hover:text-blue-light"><i
                                         class="fa fa-comment fa-lg mr-2"></i> 9</a></span>
 
+                            {{-- bookmark section --}}
+                            @if ($tweet->isFavoritedby(Auth::user()))
+                                <span class="mr-8"><a href="{{ route('tweets.unfavorite', $tweet) }}"
+                                        class="text-grey-dark hover:no-underline hover:text-blue-light"><i
+                                            class="fa fa-bookmark fa-lg mr-2 text-red-700"></i>{{ $tweet->favoriters()->count() }}
+                                    </a></span>
+                            @else
+                                <span class="mr-8"><a href="{{ route('tweets.favorite', $tweet) }}"
+                                        class="text-grey-dark hover:no-underline hover:text-blue-light"><i
+                                            class="fa fa-bookmark fa-lg mr-2"></i>{{ $tweet->favoriters()->count() }}
+                                    </a></span>
+                            @endif
+
+
                             {{-- Retweet --}}
-                            @if (Auth::user()->profile_feed($tweet->id, ['isRetweet' == 0]))
+                            @if (Auth::user()->profile_feed()->where($tweet->id, 'isRetweet') == false)
                                 <span class="mr-8"><a href="{{ route('tweets.retweet', $tweet) }}"
                                         class="text-grey-dark hover:no-underline hover:text-green"><i
                                             class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
-                            @elseif (Auth::user()->profile_feed($tweet->id, ['isRetweet' == 1]))
+                            @elseif (Auth::user()->profile_feed()->where($tweet->id, 'isRetweet') == true)
                                 <span class="mr-8"><a href="{{ route('tweets.unretweet', $tweet) }}"
                                         class="text-grey-dark hover:no-underline hover:text-green"><i
                                             class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
