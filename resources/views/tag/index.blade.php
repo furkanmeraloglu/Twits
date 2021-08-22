@@ -107,16 +107,18 @@
 
                 <div class="flex justify-between">
                     <div>
-                        <p class="font-bold"><a href="{{ route('tags.show', $tag) }}"
-                            p    class="text-black">{{ $tag->hashtag }}</a></p>
-                        <small class="text-grey-dark"> {{ $tag->tweets()->count()}} Tweets</small>
+                        <p class="font-bold"><a href="{{ route('tags.show', $tag) }}" p
+                                class="text-black">{{ $tag->hashtag }}</a></p>
+                        <small class="text-grey-dark"> {{ $tag->tweets()->count() }} Tweets</small>
                     </div>
 
                 </div><br>
 
             @endforeach
 
+            {{ $tags->links() }}
         </div>
+
 
         @include('layouts.rightmenu')
 

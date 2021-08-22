@@ -18,7 +18,7 @@ class TagController extends Controller
     {
         $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
         $tweets = Tweet::all();
-        $tags = Tag::all()->sortBy('tweets')->reverse();
+        $tags = Tag::withCount('tweets')->orderBy('tweets_count', 'desc')->paginate(10);
         return view ('tag.index', compact(['tags', 'users', 'tweets']));
     }
 

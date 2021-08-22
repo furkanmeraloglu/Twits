@@ -68,7 +68,7 @@
                     <span class="text-lg font-bold">Trends for you</span>
                 </a>
             </div>
-            @foreach ($tags as $tag)
+            @foreach ($rightMenuTags as $tag)
             <div class="mb-3 leading-tight">
                 <div><a href="#" class="text-teal font-bold">{{$tag->hashtag}}</a></div>
                 <div><a href="#" class="text-grey-dark text-xs">{{ $tag->tweets->count() }}</a></div>

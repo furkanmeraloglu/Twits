@@ -2,26 +2,17 @@
 
 namespace App\Providers;
 
-use App\Models\Tweet;
-use Illuminate\Support\ServiceProvider;
-use App\Models\User;
 use App\Models\Tag;
-use Illuminate\Contracts\Pagination\Paginator;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Overtrue\LaravelFollow\Events\Followed;
-use Overtrue\LaravelFollow\Events\Unfollowed;
-use Overtrue\LaravelFollow\UserFollower;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
-{
+class AppServiceProvider extends ServiceProvider {
     /**
      * Register any application services.
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         //
     }
 
@@ -30,14 +21,12 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        
-        if(Tag::count() != 0)
+    public function boot() {
+        $tags = [];
+        if ( Tag::count() != 0 )
         {
-            
-            $tags = DB::table('tag_tweet')->orderBy('tweet_id')->cursorPaginate(5);
-            return view ('layouts.rightmenu', compact('tags'));
+            $tags = Tag::withCount( 'tweets' )->orderBy( 'tweets_count', 'desc' )->take(5)->get();
         }
+        view()->share( 'rightMenuTags', $tags );
     }
 }

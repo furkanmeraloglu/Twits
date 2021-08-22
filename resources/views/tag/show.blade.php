@@ -103,13 +103,13 @@
 
             {{-- Tag Index Cards --}}
 
-            @foreach ($tagTweets as $tweet)
+            @foreach ($tagTweets as $tag)
 
                 <div class="flex justify-between">
                     <div>
-                        <p class="font-bold"><a href="{{ route('users.show', $tweet) }}"
-                            p    class="text-black">{{ $tweet->content }}</a></p>
-                        <small class="text-grey-dark"> {{ $tweet->user()->name}} Tweets</small>
+                        <p class="font-bold"><a href="{{ route('users.show', $tag->tweet->user()) }}"
+                            p    class="text-black">{{ $tag->tweet->content }}</a></p>
+                        <small class="text-grey-dark"> {{ $tag->tweet()->content}} Tweets</small>
                     </div>
 
                 </div><br>

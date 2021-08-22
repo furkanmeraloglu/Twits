@@ -140,7 +140,7 @@
                                         class="text-black">{{ $tweet->user->name }}</a></span>
                                 <span class="text-grey-dark">@ {{ $tweet->user->nickname }}</span>
 
-                                <span class="text-grey-dark">{{ $tweet->created_at }}</span>
+                                <span class="text-grey-dark" title="{{ $tweet->created_at }}" >{{ $tweet->created_at->diffForHumans() }}</span>
                             </div>
 
                         </div>
