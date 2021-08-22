@@ -125,7 +125,7 @@ class UserController extends Controller
             $img->move($destinationPath, $newAvatarName);
             $user->image_path = $newAvatarName;
             
-        }elseif($request->hasFile('bgimg')){
+        }if($request->hasFile('bgimg')){
             $bgimg = $request->file('bgimg');
             $newBgimgName = uniqid() . '.' . $request->nickname . '.' . $bgimg->getClientOriginalExtension();
             $bgimg->move($destinationPath, $newBgimgName);
