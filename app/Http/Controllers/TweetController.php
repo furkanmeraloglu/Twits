@@ -28,6 +28,15 @@ class TweetController extends Controller
         return view('tweet.likers', compact('likers', 'users'));
     }
 
+    public function getLikes(Request $request, User $user)
+    {
+        $user = $request->user();
+        $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
+        $likes = $user->likes()->with('likeable')->get();
+        return view('tweet.likes', compact('likes', 'users', 'user'));
+
+    }
+
     public function unlike(Request $request, Tweet $tweet)
     {
         $request->user()->unlike($tweet);

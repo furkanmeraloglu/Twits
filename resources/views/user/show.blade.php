@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent hover:border-teal">
-                        <a href="#" class="text-grey-darker no-underline hover:no-underline">
+                        <a href="{{route('tweets.getLikes', $user)}}" class="text-grey-darker no-underline hover:no-underline">
                             <div class="text-sm font-bold tracking-tight mb-1">Likes</div>
                             <div class="text-lg tracking-tight font-bold hover:text-teal">
                                 {{ $user->likes()->count() }}</div>
