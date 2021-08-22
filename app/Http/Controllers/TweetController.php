@@ -55,6 +55,12 @@ class TweetController extends Controller
 
     // Comment
 
+    public function add_comment(Tweet $tweet)
+    {
+        $users = User::all();
+        return view('tweet.comment', compact('tweet', 'users'));
+    }
+
     public function comment(Request $request, Tweet $tweet)
     {
         $request->validate([
@@ -110,9 +116,9 @@ class TweetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Tweet $tweet)
+    public function create()
     {
-        return view('', compact('tweet'));
+
     }
 
     /**
