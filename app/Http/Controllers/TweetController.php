@@ -74,12 +74,15 @@ class TweetController extends Controller
 
     public function retweet(Request $request, Tweet $tweet)
     {
-        $request->user()->profile_feed()->pluck($tweet->id)->attach(['isRetweet' => true]);
+        /* $request->user()->profile_feed()->attach($tweet->id); */
+        $request->user()->profile_feed()->attach($tweet->id, ['isRetweet' => 1]);
+        return redirect('dashboard');
     }
 
     public function unretweet(Request $request, Tweet $tweet)
     {
-        $request->user()->profile_feed()->detach($tweet->id, ['isRetweet' => false]);
+        $request->user()->profile_feed()->detach($tweet->id, ['isRetweet' => 0]);
+        return redirect('dashboard');
     }
 
     /**
