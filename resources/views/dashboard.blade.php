@@ -169,7 +169,7 @@
                             {{-- Yeni oluşturulacak bu tweet'in id'si otomatik olarak tanımlanıp content'i validate edilecek --}}
                             {{-- Sonrasında bu yeni tweet parent_id'ye sahip olan bir tweet olarak kaydedilecek. --}}
 
-                            <span class="mr-8"><a href="{{ route('tweets.create', $tweet) }}"
+                            <span class="mr-8"><a href="{{ route('tweets.add_comment', $tweet) }}"
                                     class="text-grey-dark hover:no-underline hover:text-blue-light"><i
                                         class="fa fa-comment fa-lg mr-2"></i> 9</a></span>
 
