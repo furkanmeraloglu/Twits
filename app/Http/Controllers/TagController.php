@@ -16,9 +16,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
         $tweets = Tweet::all();
-        $tags = Tag::all();
+        $tags = Tag::all()->sortBy('tweets')->reverse();
         return view ('tag.index', compact(['tags', 'users', 'tweets']));
     }
 

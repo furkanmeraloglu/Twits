@@ -122,7 +122,7 @@
 
             @foreach ($tweets as $tweet)
 
-                <div class="flex border-b border-solid border-grey-light">
+                <div class="w-auto flex border-b border-solid border-grey-light">
                     <div class="w-1/8 text-right pl-3 pt-3">
                         @if ($tweet->user->image_path === null)
                             <div><a href="#"><img src="https://source.unsplash.com/400x400" alt="avatar"
@@ -145,7 +145,7 @@
 
                         </div>
 
-                        <div>
+                        <div >
                             <div class="mb-4">
 
                                 <p class="mb-6">{{ $tweet->content }}</p>

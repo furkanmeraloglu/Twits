@@ -68,36 +68,13 @@
                     <span class="text-lg font-bold">Trends for you</span>
                 </a>
             </div>
-
+            @foreach ($tags as $tag)
             <div class="mb-3 leading-tight">
-                <div><a href="#" class="text-teal font-bold">Happy New Year</a></div>
-                <div><a href="#" class="text-grey-dark text-xs">645K Tweets</a></div>
+                <div><a href="#" class="text-teal font-bold">{{$tag->hashtag}}</a></div>
+                <div><a href="#" class="text-grey-dark text-xs">{{ $tag->tweets->count() }}</a></div>
             </div>
 
-            <div class="mb-3 leading-tight">
-                <div><a href="#" class="text-teal font-bold">Happy 2018</a></div>
-                <div><a href="#" class="text-grey-dark text-xs">NYE 2018 Celebrations</a></div>
-            </div>
-
-            <div class="mb-3 leading-tight">
-                <div><a href="#" class="text-teal font-bold">#ByeBye2017</a></div>
-                <div><a href="#" class="text-grey-dark text-xs">21.7K Tweets</a></div>
-            </div>
-
-            <div class="mb-3 leading-tight">
-                <div><a href="#" class="text-teal font-bold">#SomeHashTag</a></div>
-                <div><a href="#" class="text-grey-dark text-xs">45K Tweets</a></div>
-            </div>
-
-            <div class="mb-3 leading-tight">
-                <div><a href="#" class="text-teal font-bold">Something Trending</a></div>
-                <div><a href="#" class="text-grey-dark text-xs">36K Tweets</a></div>
-            </div>
-
-            <div class="mb-3 leading-tight">
-                <div><a href="#" class="text-teal font-bold">#ColdAF</a></div>
-                <div><a href="#" class="text-grey-dark text-xs">100K Tweets</a></div>
-            </div>
+            @endforeach
 
         </div>
 
