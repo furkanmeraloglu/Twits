@@ -45,23 +45,7 @@
                 </div>
             </div>
         @endforeach
-
-
-        <div class="flex  ">
-            <div class="py-4">
-
-            </div>
-            <div class="pl-2 py-2 w-full">
-                <div class="flex justify-between">
-
-                </div>
-            </div>
-
-            <div class="pt-2">
-
-            </div>
-        </div>
-
+        
         <div class="bg-white p-3 mb-3">
             <div class="mb-3">
                 <a href="{{ route('tags.index') }}">
@@ -71,7 +55,7 @@
             @foreach ($rightMenuTags as $tag)
             <div class="mb-3 leading-tight">
                 <div><a href="#" class="text-teal font-bold">{{$tag->hashtag}}</a></div>
-                <div><a href="#" class="text-grey-dark text-xs">{{ $tag->tweets->count() }}</a></div>
+                <div><a href="#" class="text-grey-dark text-xs">{{ $tag->tweets->count() }} Tweets </a></div>
             </div>
 
             @endforeach
