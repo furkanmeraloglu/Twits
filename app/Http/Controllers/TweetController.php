@@ -6,6 +6,7 @@ use App\Models\Tweet;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TweetController extends Controller
 {
@@ -77,7 +78,11 @@ class TweetController extends Controller
     {
         /* $request->user()->profile_feed()->attach($tweet->id); */
         $request->user()->profile_feed()->attach($tweet->id, ['isRetweet' => 1]);
-        return redirect('dashboard');
+        $dbQuery = DB::select('select isRetweet, user_id, tweet_id from feed where tweet_id = ' . $tweet->id);
+        $dbCount = count($dbQuery);
+        $tweets = Tweet::all();
+        $users = User::all();
+        return view('dashboard', compact(['dbCount', 'tweets', 'users']));
     }
 
     public function unretweet(Request $request, Tweet $tweet)
