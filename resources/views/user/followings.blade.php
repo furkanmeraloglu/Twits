@@ -51,6 +51,13 @@
                                 {{ $user->likes()->count() }}</div>
                         </a>
                     </li>
+                    <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent hover:border-teal">
+                        <a href="{{route('tweets.getFavorites', Auth::user())}}" class="text-grey-darker no-underline hover:no-underline">
+                            <div class="text-sm font-bold tracking-tight mb-1">Favorites</div>
+                            <div class="text-lg tracking-tight font-bold hover:text-teal">
+                                {{ Auth::user()->favorites()->count() }}</div>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="w-full lg:w-1/4 flex my-4 lg:my-0 lg:justify-end items-center">
