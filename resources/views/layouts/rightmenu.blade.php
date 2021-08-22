@@ -64,8 +64,9 @@
 
         <div class="bg-white p-3 mb-3">
             <div class="mb-3">
-                <span class="text-lg font-bold">Trends for you</span>
-
+                <a href="{{ route('tags.index') }}">
+                    <span class="text-lg font-bold">Trends for you</span>
+                </a>
             </div>
 
             <div class="mb-3 leading-tight">

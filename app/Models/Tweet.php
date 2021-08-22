@@ -23,7 +23,7 @@ class Tweet extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'tweet_tag');
+        return $this->belongsToMany(Tag::class);
     }
 
     public function parent()

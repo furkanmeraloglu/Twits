@@ -15,10 +15,10 @@ class CreateTweetTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('tweet_tag', function (Blueprint $table) {
+        Schema::create('tag_tweet', function (Blueprint $table) {
             $table->foreignIdFor(Tweet::class);
             $table->foreignIdFor(Tag::class);
-            $table->unique(['tweet_id', 'tag_id']);
+            $table->unique(['tag_id', 'tweet_id']);
         });
     }
 
@@ -29,6 +29,6 @@ class CreateTweetTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tweet_tag');
+        Schema::dropIfExists('tag_tweet');
     }
 }

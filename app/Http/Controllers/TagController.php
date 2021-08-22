@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+use App\Models\Tweet;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -14,8 +16,10 @@ class TagController extends Controller
      */
     public function index()
     {
+        $users = User::all();
+        $tweets = Tweet::all();
         $tags = Tag::all();
-        return view ('tag.index', compact('tags'));
+        return view ('tag.index', compact(['tags', 'users', 'tweets']));
     }
 
     /**
@@ -47,8 +51,10 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        $tagTweets = $tag->tweets()->orderbY($tag->tweets()->likers()->count(), 'DESC')->get();
-        return view ('tag.show', compact('tagTweets'));
+        $users = User::all();
+        $tags = Tag::all();
+        $tagTweets = Tag::with('tweets')->findOrFail($tag->id);
+        return view ('tag.show', compact(['tagTweets', 'tags', 'users']));
     }
 
     /**

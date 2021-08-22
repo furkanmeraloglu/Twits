@@ -2,7 +2,7 @@
     <a href=" {{ route('dashboard') }} "
         class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline"><i
             class="fa fa-home fa-lg"></i> Home</a>
-    <a href="#"
+    <a href="{{ route('tags.index') }}"
         class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline"><i
             class="fa fa-globe-europe fa-lg"></i> Explore </a>
     <a href="#"
