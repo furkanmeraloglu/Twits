@@ -188,15 +188,10 @@
 
 
                             {{-- Retweet --}}
-                           
+                            
                                 <span class="mr-8"><a href="{{ route('tweets.retweet', $tweet) }}"
                                         class="text-grey-dark hover:no-underline hover:text-green"><i
                                             class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
-                            
-                                {{-- <span class="mr-8"><a href="{{ route('tweets.unretweet', $tweet) }}"
-                                        class="text-grey-dark hover:no-underline hover:text-green"><i
-                                            class="fa fa-retweet fa-lg mr-2"></i> 29</a></span> --}}
-                            
 
                             {{-- Like --}}
 

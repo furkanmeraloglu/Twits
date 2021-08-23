@@ -25,7 +25,10 @@ class TweetFactory extends Factory
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'content' => $this->faker->text( 140 ),
+<<<<<<< HEAD
             
+=======
+>>>>>>> e877f3c1c4a8424a369da89eb7fab19c6df691d7
         ];
     }
 }
