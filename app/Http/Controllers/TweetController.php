@@ -94,10 +94,9 @@ class TweetController extends Controller
         /* $request->user()->profile_feed()->attach($tweet->id); */
         $request->user()->profile_feed()->attach($tweet->id, ['isRetweet' => 1]);
         $dbQuery = DB::select('select isRetweet, user_id, tweet_id from feed where tweet_id = ' . $tweet->id);
-        $dbCount = count($dbQuery);
-        $tweets = Tweet::all();
-        $users = User::all();
-        return view('dashboard', compact(['dbCount', 'tweets', 'users']));
+        
+        
+        return redirect('dashboard');
     }
 
     public function unretweet(Request $request, Tweet $tweet)
