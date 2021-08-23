@@ -21,11 +21,6 @@ class User extends Authenticatable
         return $this->hasMany(Tweet::class);
     }
 
-    public function profile_feed()
-    {
-        return $this->belongsToMany(Tweet::class, 'feed');
-    }
-
     /**
      * The attributes that are mass assignable.
      *

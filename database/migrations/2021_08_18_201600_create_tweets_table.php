@@ -19,7 +19,6 @@ class CreateTweetsTable extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->text('content');
-            $table->foreignIdFor(Tweet::class, 'parent_id')->nullable();
             $table->timestamps();
         });
     }

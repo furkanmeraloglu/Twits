@@ -66,23 +66,12 @@ class TweetController extends Controller
 
     public function add_comment(Tweet $tweet)
     {
-        $users = User::all();
-        return view('tweet.comment', compact('tweet', 'users'));
+
     }
 
     public function comment(Request $request, Tweet $tweet)
     {
-        $request->validate([
-            'content' => 'required|max:240',
-        ]);
-        $comment = new Tweet;
-        $comment->parent_id = $tweet->id;
-        $comment->user_id = $request->user()->id;
-        $comment->content = $request->content;
-        $comment->save();
-        $comment->set_hashtags($comment->diverge_tags_from_content($comment->content));   // Tweet'in taglerini kaydediyoruz.
-        $request->user()->profile_feed()->attach($comment);                               // Atılan tweet'i kullanıcının feed'ine de ekliyoruz.
-        return redirect('/dashboard');
+        
     }
 
     // Giriş yapmış kullanıcının başka kullanıcının tweet'ini rt etmesi durumunda rt edilen tweetin rt eden kullanıcının feed'ine eklenmesi gerekiyor.
@@ -91,18 +80,19 @@ class TweetController extends Controller
 
     public function retweet(Request $request, Tweet $tweet)
     {
-        /* $request->user()->profile_feed()->attach($tweet->id); */
+        /* $request->user()->profile_feed()->attach($tweet->id);
         $request->user()->profile_feed()->attach($tweet->id, ['isRetweet' => 1]);
         $dbQuery = DB::select('select isRetweet, user_id, tweet_id from feed where tweet_id = ' . $tweet->id);
-        
-        
-        return redirect('dashboard');
+        $dbCount = count($dbQuery);
+        $tweets = Tweet::all();
+        $users = User::all();
+        return view('dashboard', compact(['dbCount', 'tweets', 'users'])); */
     }
 
     public function unretweet(Request $request, Tweet $tweet)
     {
-        $request->user()->profile_feed()->detach($tweet->id, ['isRetweet' => 0]);
-        return redirect('dashboard');
+        /* $request->user()->profile_feed()->detach($tweet->id, ['isRetweet' => 0]);
+        return redirect('dashboard'); */
     }
 
     /**
@@ -147,7 +137,7 @@ class TweetController extends Controller
         $tweet->save();
 
         $tweet->set_hashtags($tweet->diverge_tags_from_content($tweet->content));   // Tweet'in taglerini kaydediyoruz.
-        $request->user()->profile_feed()->attach($tweet);                           // Atılan tweet'i kullanıcının feed'ine de ekliyoruz.
+                                // Atılan tweet'i kullanıcının feed'ine de ekliyoruz.
 
         return redirect('/dashboard');
     }

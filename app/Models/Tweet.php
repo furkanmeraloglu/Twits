@@ -11,11 +11,6 @@ class Tweet extends Model
 {
     use HasFactory, Likeable, Favoriteable;
 
-    public function tweet_feed()
-    {
-        return $this->belongsToMany(User::class, 'feed');
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -24,16 +19,6 @@ class Tweet extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
-    }
-
-    public function parent()
-    {
-        return $this->belongsTo(Tweet::class, 'parent_id');
-    }
-
-    public function children()
-    {
-        return $this->hasMany(Tweet::class, 'parent_id');
     }
 
     protected $fillable = [
