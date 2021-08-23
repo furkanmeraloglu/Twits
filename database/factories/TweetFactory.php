@@ -25,7 +25,7 @@ class TweetFactory extends Factory
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'content' => $this->faker->text( 140 ),
-            'parent_id' => ($this->faker->boolean(50) && Tweet::count() > 0) ? Tweet::all()->random()->id : null,
+            
         ];
     }
 }
