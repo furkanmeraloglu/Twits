@@ -47,14 +47,16 @@
                         </a>
                     </li>
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent hover:border-teal">
-                        <a href="{{route('tweets.getLikes', Auth::user())}}" class="text-grey-darker no-underline hover:no-underline">
+                        <a href="{{ route('tweets.getLikes', Auth::user()) }}"
+                            class="text-grey-darker no-underline hover:no-underline">
                             <div class="text-sm font-bold tracking-tight mb-1">Likes</div>
                             <div class="text-lg tracking-tight font-bold hover:text-teal">
                                 {{ Auth::user()->likes()->count() }}</div>
                         </a>
                     </li>
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent hover:border-teal">
-                        <a href="{{route('tweets.getFavorites', Auth::user())}}" class="text-grey-darker no-underline hover:no-underline">
+                        <a href="{{ route('tweets.getFavorites', Auth::user()) }}"
+                            class="text-grey-darker no-underline hover:no-underline">
                             <div class="text-sm font-bold tracking-tight mb-1">Favorites</div>
                             <div class="text-lg tracking-tight font-bold hover:text-teal">
                                 {{ Auth::user()->favorites()->count() }}</div>
@@ -188,10 +190,10 @@
 
 
                             {{-- Retweet --}}
-                            
-                                <span class="mr-8"><a href="{{ route('tweets.retweet', $tweet) }}"
-                                        class="text-grey-dark hover:no-underline hover:text-green"><i
-                                            class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
+
+                            <span class="mr-8"><a href="{{ route('tweets.retweet', $tweet) }}"
+                                    class="text-grey-dark hover:no-underline hover:text-green"><i
+                                        class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
 
                             {{-- Like --}}
 

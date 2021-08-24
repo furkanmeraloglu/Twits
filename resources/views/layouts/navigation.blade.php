@@ -11,9 +11,9 @@
     <a href="{{ route('tweets.getFavorites', Auth::user()) }}"
         class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline"><i
             class="fa fa-bookmark fa-lg"></i> Bookmarks </a>
-    <a href="https://quickabdest.com/"
+    <a href="https://quickabdest.com/" target="_blank"
         class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-teal hover:border-teal hover:no-underline"><i
-            class="fa fa-life-ring fa-lg"></i> Help Center </a>
+            class="fa fa-life-ring fa-lg"></i> Help </a>
 
 </nav>
 <div class="w-full lg:w-1/5 text-center my-4 lg:my-0"><a href="#"><i class="fa fa-twitter fa-lg text-blue"></i></a>
