@@ -45,7 +45,7 @@
                 </div>
             </div>
         @endforeach
-        
+
         <div class="bg-white p-3 mb-3">
             <div class="mb-3">
                 <a href="{{ route('tags.index') }}">
@@ -54,8 +54,8 @@
             </div>
             @foreach ($rightMenuTags as $tag)
             <div class="mb-3 leading-tight">
-                <div><a href="#" class="text-teal font-bold">{{$tag->hashtag}}</a></div>
-                <div><a href="#" class="text-grey-dark text-xs">{{ $tag->tweets->count() }} Tweets </a></div>
+                <div><a href="{{ route('tags.show', $tag) }}" class="text-teal font-bold">{{$tag->hashtag}}</a></div>
+                <div><a href="{{ route('tags.show', $tag) }}" class="text-grey-dark text-xs">{{ $tag->tweets->count() }} Tweets </a></div>
             </div>
 
             @endforeach
