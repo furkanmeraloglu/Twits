@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravelista/comments": "^4.5",
+        "multiavatar/multiavatar-php": "^1.0",
         "overtrue/laravel-favorite": "^4.0",
         "overtrue/laravel-follow": "^3.0",
         "overtrue/laravel-like": "^4.0",
