@@ -35,6 +35,6 @@ We, as enthusiastic learners and new developers, kicked of this project in order
     `php artisan migrate`
   - Seed the database for fake data
     `php artisan db:seed` 
-  - Enjoy the baby twitter `:star_struck:`
+  - Enjoy the baby twitter :star_struck:
 
 Please feel free to contribute, open an issue and test the application. It is more than welcome to hear from you about the project and its weaknesses. 
