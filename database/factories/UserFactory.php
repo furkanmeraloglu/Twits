@@ -26,7 +26,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'nickname' => $this->faker->unique()->name(),
+            'nickname' => $this->faker->unique()->userName(),
             'bio' => $this->faker->paragraph(),
             'birth_date' => $this->faker->date('Y-m-d', 'now'),
             'isAdmin' => Rand(0,1),
