@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use App\Models\Tweet;
 
+
 class CreateTweetsTable extends Migration
 {
     /**

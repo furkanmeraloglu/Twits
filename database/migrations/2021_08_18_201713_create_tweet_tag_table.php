@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Tag;
 use App\Models\Tweet;
 
+
 class CreateTweetTagTable extends Migration
 {
     /**

@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Nette\Utils\Random;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Multiavatar;
+use App\Events\CreateUser;
 
 class UserFactory extends Factory
 {
@@ -24,6 +27,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+
         return [
             'name' => $this->faker->name(),
             'nickname' => $this->faker->unique()->userName(),
@@ -34,7 +38,10 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'), // password
             'remember_token' => Str::random(10),
+        
         ];
+
+        
     }
 
     /**

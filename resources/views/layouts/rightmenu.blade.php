@@ -7,15 +7,12 @@
         @foreach ($users as $user)
             <div class="flex border-b border-solid border-grey-light">
                 <div class="py-2">
-                    @if ($user->image_path === null)
+                   
+                  
                         <div><a href="{{ route('users.show', $user) }}"><img
-                                    src="https://source.unsplash.com/400x400" alt="avatar"
+                                    src="{{ asset('storage/' . $user->image_path) }}" alt="avatar"
                                     class="rounded-full h-12 w-12 mr-2"></a></div>
-                    @else
-                        <div><a href="{{ route('users.show', $user) }}"><img
-                                    src="{{ asset('images/' . $user->image_path) }}" alt="avatar"
-                                    class="rounded-full h-12 w-12 mr-2"></a></div>
-                    @endif
+                   
                 </div>
                 <div class="pl-2 py-2 w-full">
                     <div class="flex justify-between mb-1">

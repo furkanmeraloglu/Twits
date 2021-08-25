@@ -18,6 +18,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/main.js') }}" defer></script>
+        <script src="multiavatar.min.js" defer></script>
     </head>
     <body class="bg-grey-light font-sans">
         <div class="bg-white">

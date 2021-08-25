@@ -12,13 +12,10 @@
         <div class="container mx-auto flex flex-col lg:flex-row items-center lg:relative">
             <div class="w-full lg:w-1/4">
                 {{-- avatar --}}
-                @if ($user->image_path === null)
-                    <img src="https://source.unsplash.com/400x400" alt="logo"
+              
+                    <img src="{{ asset('storage/' . $user->image_path) }}" alt="logo"
                         class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
-                @else
-                    <img src="{{ asset('images/' . $user->image_path) }}" alt="logo"
-                        class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
-                @endif
+             
             </div>
             <div class="w-full lg:w-1/2">
                 <ul class="list-reset flex">
@@ -115,13 +112,10 @@
 
                 <div class="flex border-b border-solid border-grey-light">
                     <div class="w-1/8 text-right pl-3 pt-3">
-                        @if ($favorite->user->image_path === null)
-                            <div><a href="#"><img src="https://source.unsplash.com/400x400" alt="avatar"
-                                        class="rounded-full h-12 w-12 mr-2"></a></div>
-                        @else
-                            <div><a href="#"><img src="{{ asset('images/' . $favorite->user->image_path) }}"
+                     
+                            <div><a href="#"><img src="{{ asset('storage/' . $favorite->user->image_path) }}"
                                         alt="avatar" class="rounded-full h-12 w-12 mr-2"></a></div>
-                        @endif
+                       
                     </div>
                     <div class="w-7/8 p-3 pl-0">
 

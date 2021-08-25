@@ -11,6 +11,8 @@ use Overtrue\LaravelFavorite\Traits\Favoriter;
 use Overtrue\LaravelFollow\Followable;
 use Overtrue\LaravelLike\Traits\Likeable;
 use Overtrue\LaravelLike\Traits\Liker;
+use App\Events\CreateUser;
+
 
 class User extends Authenticatable
 {
@@ -34,6 +36,7 @@ class User extends Authenticatable
         'website',
         'image_path',
         'bg_image_path',
+        'svg',
         'email',
         'password',
     ];
@@ -60,5 +63,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    protected $dispatchesEvents = [
+        'created' => CreateUser::class,
     ];
 }

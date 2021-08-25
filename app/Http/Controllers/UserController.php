@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tweet;
+use Multiavatar;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -56,6 +58,16 @@ class UserController extends Controller
     public function create()
     {
         //
+    }
+
+    public function creatUserAvatar(User $user){
+        
+        $multiavatar = new Multiavatar();
+        $avatarId = uniqId();
+        $fileName = $avatarId . '.' . 'svg';
+        $avatar = $multiavatar->generate($avatarId, null, null);
+        Storage::disk('public')->put($fileName, $avatar);
+        $user->image_path = $fileName;
     }
 
     /**
