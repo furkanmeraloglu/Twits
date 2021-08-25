@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea3cc4db560dd80a98c9253ab77c838f",
+    "content-hash": "dc3f94824c13cac33bddf49549c8e2fa",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -502,56 +502,6 @@
             "time": "2020-12-29T14:50:06+00:00"
         },
         {
-            "name": "erusev/parsedown",
-            "version": "1.7.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/erusev/parsedown.git",
-                "reference": "cb17b6477dfff935958ba01325f2e8a2bfa6dab3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/cb17b6477dfff935958ba01325f2e8a2bfa6dab3",
-                "reference": "cb17b6477dfff935958ba01325f2e8a2bfa6dab3",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Parsedown": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Emanuil Rusev",
-                    "email": "hello@erusev.com",
-                    "homepage": "http://erusev.com"
-                }
-            ],
-            "description": "Parser for Markdown.",
-            "homepage": "http://parsedown.org",
-            "keywords": [
-                "markdown",
-                "parser"
-            ],
-            "support": {
-                "issues": "https://github.com/erusev/parsedown/issues",
-                "source": "https://github.com/erusev/parsedown/tree/1.7.x"
-            },
-            "time": "2019-12-30T22:54:17+00:00"
-        },
-        {
             "name": "fruitcake/laravel-cors",
             "version": "v2.0.4",
             "source": {
@@ -934,16 +884,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.55.0",
+            "version": "v8.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "997e2aa23e9103137715018ae926c52f8a1703f2"
+                "reference": "d700f336dc672dcbfe46db05d4e5fe9347b3a5b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/997e2aa23e9103137715018ae926c52f8a1703f2",
-                "reference": "997e2aa23e9103137715018ae926c52f8a1703f2",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d700f336dc672dcbfe46db05d4e5fe9347b3a5b6",
+                "reference": "d700f336dc672dcbfe46db05d4e5fe9347b3a5b6",
                 "shasum": ""
             },
             "require": {
@@ -1098,7 +1048,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-08-17T14:13:34+00:00"
+            "time": "2021-08-24T13:46:30+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -1231,72 +1181,6 @@
                 "source": "https://github.com/laravel/tinker/tree/v2.6.1"
             },
             "time": "2021-03-02T16:53:12+00:00"
-        },
-        {
-            "name": "laravelista/comments",
-            "version": "4.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravelista/comments.git",
-                "reference": "f1c7a476f79b80f0e28ba901436832f773299ee6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravelista/comments/zipball/f1c7a476f79b80f0e28ba901436832f773299ee6",
-                "reference": "f1c7a476f79b80f0e28ba901436832f773299ee6",
-                "shasum": ""
-            },
-            "require": {
-                "erusev/parsedown": "^1.7",
-                "illuminate/database": "^8.0",
-                "illuminate/http": "^8.0",
-                "illuminate/pagination": "^8.0",
-                "illuminate/queue": "^8.0",
-                "illuminate/routing": "^8.0",
-                "illuminate/support": "^8.0",
-                "php": "^7.4|^8.0",
-                "spatie/laravel-honeypot": "^3.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Laravelista\\Comments\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravelista\\Comments\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mario Bašić",
-                    "email": "mario@laravelista.hr",
-                    "homepage": "https://laravelista.hr"
-                }
-            ],
-            "description": "Comments for Laravel.",
-            "keywords": [
-                "comments",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/laravelista/comments/issues",
-                "source": "https://github.com/laravelista/comments/tree/4.5.0"
-            },
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/laravelista",
-                    "type": "patreon"
-                }
-            ],
-            "time": "2021-03-15T14:52:28+00:00"
         },
         {
             "name": "league/commonmark",
@@ -1786,16 +1670,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.51.1",
+            "version": "2.52.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "8619c299d1e0d4b344e1f98ca07a1ce2cfbf1922"
+                "reference": "369c0e2737c56a0f39c946dd261855255a6fccbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8619c299d1e0d4b344e1f98ca07a1ce2cfbf1922",
-                "reference": "8619c299d1e0d4b344e1f98ca07a1ce2cfbf1922",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/369c0e2737c56a0f39c946dd261855255a6fccbe",
+                "reference": "369c0e2737c56a0f39c946dd261855255a6fccbe",
                 "shasum": ""
             },
             "require": {
@@ -1876,7 +1760,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-28T13:16:28+00:00"
+            "time": "2021-08-14T19:10:52+00:00"
         },
         {
             "name": "nette/schema",
@@ -3057,78 +2941,6 @@
                 }
             ],
             "time": "2021-08-11T01:06:55+00:00"
-        },
-        {
-            "name": "spatie/laravel-honeypot",
-            "version": "3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-honeypot.git",
-                "reference": "3dd4319c3d42a9db2bae30582844528799bb22d2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-honeypot/zipball/3dd4319c3d42a9db2bae30582844528799bb22d2",
-                "reference": "3dd4319c3d42a9db2bae30582844528799bb22d2",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^8.0",
-                "illuminate/encryption": "^8.0",
-                "illuminate/http": "^8.0",
-                "illuminate/support": "^8.0",
-                "illuminate/validation": "^8.0",
-                "nesbot/carbon": "^2.0",
-                "php": "^7.4|^8.0",
-                "symfony/http-foundation": "^5.1.2"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6.0",
-                "spatie/phpunit-snapshot-assertions": "^4.0",
-                "spatie/test-time": "^1.2.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\Honeypot\\HoneypotServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\Honeypot\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Preventing spam submitted through forms",
-            "homepage": "https://github.com/spatie/laravel-honeypot",
-            "keywords": [
-                "laravel-honeypot",
-                "spatie"
-            ],
-            "support": {
-                "issues": "https://github.com/spatie/laravel-honeypot/issues",
-                "source": "https://github.com/spatie/laravel-honeypot/tree/3.0.1"
-            },
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                }
-            ],
-            "time": "2020-11-03T12:56:39+00:00"
         },
         {
             "name": "spatie/laravel-query-builder",
@@ -6018,16 +5830,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.11.4",
+            "version": "2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "1b8d83c5dac7c5ee8429daf284ce3f19b1d17ea2"
+                "reference": "74dcc32a2895a126d1e5f2cd3bbab499cac66db1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/1b8d83c5dac7c5ee8429daf284ce3f19b1d17ea2",
-                "reference": "1b8d83c5dac7c5ee8429daf284ce3f19b1d17ea2",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/74dcc32a2895a126d1e5f2cd3bbab499cac66db1",
+                "reference": "74dcc32a2895a126d1e5f2cd3bbab499cac66db1",
                 "shasum": ""
             },
             "require": {
@@ -6090,7 +5902,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-08-17T11:45:33+00:00"
+            "time": "2021-08-24T09:53:54+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -6391,16 +6203,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.10.0",
+            "version": "v1.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "05cf80b1365a0b556f6c21ed5c71a27971d06ec8"
+                "reference": "267fafeaf0e0311952316ae0f3c765abc7516469"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/05cf80b1365a0b556f6c21ed5c71a27971d06ec8",
-                "reference": "05cf80b1365a0b556f6c21ed5c71a27971d06ec8",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/267fafeaf0e0311952316ae0f3c765abc7516469",
+                "reference": "267fafeaf0e0311952316ae0f3c765abc7516469",
                 "shasum": ""
             },
             "require": {
@@ -6447,7 +6259,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2021-08-17T16:00:47+00:00"
+            "time": "2021-08-23T13:43:27+00:00"
         },
         {
             "name": "maximebf/debugbar",

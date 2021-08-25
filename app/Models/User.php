@@ -9,14 +9,22 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Overtrue\LaravelFavorite\Traits\Favoriter;
 use Overtrue\LaravelFollow\Followable;
-use Overtrue\LaravelLike\Traits\Likeable;
 use Overtrue\LaravelLike\Traits\Liker;
 use App\Events\CreateUser;
-
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Followable, Liker, Favoriter;
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function feeds()
+    {
+        return $this->belongsToMany(Feed::class);
+    }
 
     public function tweets()
     {
