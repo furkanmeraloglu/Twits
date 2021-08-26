@@ -5,7 +5,7 @@
         </div>
     @else
         <div class="hero h-64 bg-cover h-112 full"
-            style="background-image: url({{ asset('images/' . Auth::user()->bg_image_path) }})"> </div>
+            style="background-image: url({{ asset('storage/' . Auth::user()->bg_image_path) }})"> </div>
     @endif
 
     <div class="bg-white shadow">

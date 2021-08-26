@@ -129,18 +129,24 @@ class UserController extends Controller
             if($request->website != null){$user->website = $request->website;}
             
 
-        $destinationPath = public_path('images');
-
+        
         if($request->hasFile('avatar')){
+            
             $img = $request->file('avatar');
-            $newAvatarName = uniqid() . '.' . $request->nickname . '.' . $img->getClientOriginalExtension();
-            $img->move($destinationPath, $newAvatarName);
+            $newAvatarName = uniqid() . '.' . $img->getClientOriginalExtension();
+                if($user->image_path != null){
+                    Storage::disk('public')->delete($user->image_path);
+                }
+            Storage::disk('public')->put($newAvatarName, file_get_contents($img));
             $user->image_path = $newAvatarName;
             
         }if($request->hasFile('bgimg')){
             $bgimg = $request->file('bgimg');
-            $newBgimgName = uniqid() . '.' . $request->nickname . '.' . $bgimg->getClientOriginalExtension();
-            $bgimg->move($destinationPath, $newBgimgName);
+            $newBgimgName = uniqid() . '.' . $bgimg->getClientOriginalExtension();
+                if($user->bg_image_path != null){
+                    Storage::disk('public')->delete($user->bg_image_path);
+                }
+            Storage::disk('public')->put($newBgimgName, file_get_contents($bgimg));
             $user->bg_image_path = $newBgimgName;
         }
        
