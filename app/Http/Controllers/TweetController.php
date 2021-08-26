@@ -72,7 +72,21 @@ class TweetController extends Controller
 
     public function comment(Request $request, Tweet $tweet)
     {
+        $request->validate([
+            'content' => 'required|max:240',
+        ]);
 
+        $Childtweet = new Tweet;
+        $Childtweet->user_id = $request->user()->id;
+        $Childtweet->content = $request->content;
+        $Childtweet->parent_id = $tweet->id;
+        $Childtweet->save();
+
+        $Childtweet->set_hashtags($Childtweet->diverge_tags_from_content($Childtweet->content));   // Tweet'in taglerini kaydediyoruz.
+
+        // Atılan tweet'i kullanıcının feed'ine de eklememiz gerekiyor. O yüzden buradan FeedController'a yönlendirme yapabiliriz.
+
+        return redirect('/dashboard');
     }
 
     // Giriş yapmış kullanıcının başka kullanıcının tweet'ini rt etmesi durumunda rt edilen tweetin rt eden kullanıcının feed'ine eklenmesi gerekiyor.
