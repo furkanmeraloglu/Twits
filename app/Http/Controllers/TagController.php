@@ -53,8 +53,8 @@ class TagController extends Controller
     {
         $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
         $tags = Tag::all();
-        $tagShow = Tag::with('tweets')->findOrFail($tag->id);
-        return view ('tag.show', compact(['tagShow', 'tags', 'users']));
+        $tagTweets = Tag::find($tag->id)->tweets()->orderBy('created_at', 'DESC')->get();
+        return view ('tag.show', compact(['tag','tagTweets', 'tags', 'users']));
     }
 
     /**

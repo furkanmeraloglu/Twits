@@ -32,7 +32,7 @@ class TweetController extends Controller
     {
         $user = $request->user();
         $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
-        $likes = $user->likes()->with('likeable')->get();
+        $likes = $user->likes()->with('likeable')->orderBy('created_at', 'DESC')->get();
         return view('tweet.likes', compact('likes', 'users', 'user'));
 
     }
@@ -58,7 +58,7 @@ class TweetController extends Controller
     public function getFavorites(User $user)
     {
         $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
-        $favorites = $user->getFavoriteItems(Tweet::class)->get();
+        $favorites = $user->getFavoriteItems(Tweet::class)->orderBy('created_at', 'desc')->get();
         return view('tweet.favorites', compact('favorites', 'user', 'users'));
     }
 
@@ -66,12 +66,13 @@ class TweetController extends Controller
 
     public function add_comment(Tweet $tweet)
     {
-
+        $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
+        return view('tweet.comment', compact('tweet', 'users'));
     }
 
     public function comment(Request $request, Tweet $tweet)
     {
-        
+
     }
 
     // Giriş yapmış kullanıcının başka kullanıcının tweet'ini rt etmesi durumunda rt edilen tweetin rt eden kullanıcının feed'ine eklenmesi gerekiyor.

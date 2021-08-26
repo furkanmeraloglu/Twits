@@ -11,10 +11,10 @@
     <div class="bg-white shadow">
         <div class="container mx-auto flex flex-col lg:flex-row items-center lg:relative">
             <div class="w-full lg:w-1/4">
-             
+
                     <img src="{{ asset('storage/' . $user->image_path) }}" alt="logo"
                         class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
-               
+
             </div>
             <div class="w-full lg:w-1/2">
                 <ul class="list-reset flex">
@@ -111,20 +111,20 @@
 
                 <div class="flex border-b border-solid border-grey-light">
                     <div class="w-1/8 text-right pl-3 pt-3">
-                      
+
                             <div><a href="#"><img src="{{ asset('storage/' . $like->user->image_path) }}"
                                         alt="avatar" class="rounded-full h-12 w-12 mr-2"></a></div>
-                       
+
                     </div>
                     <div class="w-7/8 p-3 pl-0">
 
                         <div class="flex justify-between">
                             <div>
                                 <span class="font-bold"><a href="#"
-                                        class="text-black">{{ $like->user->name }}</a></span>
-                                <span class="text-grey-dark">@ {{ $like->user->nickname }}</span>
+                                        class="text-black">{{ $like->likeable->user->name }}</a></span>
+                                <span class="text-grey-dark">@ {{ $like->likeable->user->nickname }}</span>
 
-                                <span class="text-grey-dark">{{ $like->created_at }}</span>
+                                <span class="text-grey-dark">{{ $like->likeable->created_at }}</span>
                             </div>
 
                         </div>

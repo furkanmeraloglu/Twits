@@ -106,13 +106,13 @@
         <div class="w-full lg:w-1/2 bg-white mb-4">
 
             <div class="p-3 text-lg font-bold border-b border-solid border-grey-light">
-                <h1 class="text-black mr-6 no-underline hover-underline"> Tweets in {{ $tagShow->hashtag }}</h1>
+                <h1 class="text-black mr-6 no-underline hover-underline"> Tweets in {{ $tag->hashtag }}</h1>
 
             </div>
 
             {{-- Tag Index Cards --}}
 
-            @foreach ($tagShow->tweets as $tweet)
+            @foreach ($tagTweets as $tweet)
 
             <div class="w-auto flex border-b border-solid border-grey-light">
                 <div class="w-1/8 text-right pl-3 pt-3">

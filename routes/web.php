@@ -23,14 +23,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/* Routes for Resource Methods in Model Controllers */
+
 Route::resource('users', UserController::class);
 Route::resource('tweets', TweetController::class);
 Route::resource('tags', TagController::class);
+
+/* Routes for Methods in UserController */
 
 Route::get('users/{user}/follow', [UserController::class, 'follow'])->name('users.follow');
 Route::get('users/{user}/unfollow', [UserController::class, 'unfollow'])->name('users.unfollow');
 Route::get('users/{user}/followers', [UserController::class, 'followers'])->name('users.followers');
 Route::get('users/{user}/followings', [UserController::class, 'followings'])->name('users.followings');
+
+/* Routes for Methods in TweetController */
 
 Route::get('tweets/{tweet}/like', [TweetController::class, 'like'])->name('tweets.like');
 Route::get('tweets/{tweet}/unlike', [TweetController::class, 'unlike'])->name('tweets.unlike');
@@ -43,6 +49,8 @@ Route::get('tweets/{user}/getFavorites', [TweetController::class, 'getFavorites'
 Route::get('tweets/{user}/getLikes', [TweetController::class, 'getLikes'])->name('tweets.getLikes');
 Route::get('tweets/{tweet}/add_comment', [TweetController::class, 'add_comment'])->name('tweets.add_comment');
 Route::post('tweets/{tweet}/comment', [TweetController::class, 'comment'])->name('tweets.comment');
+
+/* Main Route for Dashboard */
 
 Route::get('/dashboard', function () {
     $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
