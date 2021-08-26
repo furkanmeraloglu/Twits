@@ -19,7 +19,6 @@ class CreateFeedsTable extends Migration
             $table->id();
             $table->foreignIdFor(Tweet::class);
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Comment::class);
             $table->boolean('isRetweet', Tweet::class)->default(false);
             $table->timestamps();
         });

@@ -16,10 +16,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Followable, Liker, Favoriter;
 
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
+    
 
     public function feeds()
     {
