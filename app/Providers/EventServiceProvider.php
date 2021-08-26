@@ -24,6 +24,10 @@ class EventServiceProvider extends ServiceProvider
 
         CreateUser::class => [
             CreateUserAvatarListener::class
+        ],
+
+        CreateTweet::class => [
+            AddTweetToFeedListener::class
         ]
 
     ];

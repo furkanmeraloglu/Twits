@@ -14,15 +14,15 @@ class Feed extends Model
         return $this->hasMany(Tweet::class);
     }
 
-    
-
     public function users()
     {
         return $this->belongsToMany(User::class);
     }
 
     protected $fillable = [
-
+        'user_id',
+        'tweet_id',
+        'isRetweet',
     ];
 
     protected $guarded = [
