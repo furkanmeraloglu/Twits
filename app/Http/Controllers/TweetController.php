@@ -84,30 +84,9 @@ class TweetController extends Controller
 
         $Childtweet->set_hashtags($Childtweet->diverge_tags_from_content($Childtweet->content));   // Tweet'in taglerini kaydediyoruz.
 
-        // Atılan tweet'i kullanıcının feed'ine de eklememiz gerekiyor. O yüzden buradan FeedController'a yönlendirme yapabiliriz.
+        // Atılan tweet'i kullanıcının feed'ine de eklemeK için bir event ve listener oluşturuldu. 
 
         return redirect('/dashboard');
-    }
-
-    // Giriş yapmış kullanıcının başka kullanıcının tweet'ini rt etmesi durumunda rt edilen tweetin rt eden kullanıcının feed'ine eklenmesi gerekiyor.
-    // Bunu yapmak için de öncelikle rt eden kullanıcının id'si, rt edilen tweet'in id'si ve rt edilen tweet'in sahibinin id'si gerekiyor.
-    // bu dataları ise database'e eklemek gerekiyor.
-
-    public function retweet(Request $request, Tweet $tweet)
-    {
-        /* $request->user()->profile_feed()->attach($tweet->id);
-        $request->user()->profile_feed()->attach($tweet->id, ['isRetweet' => 1]);
-        $dbQuery = DB::select('select isRetweet, user_id, tweet_id from feed where tweet_id = ' . $tweet->id);
-        $dbCount = count($dbQuery);
-        $tweets = Tweet::all();
-        $users = User::all();
-        return view('dashboard', compact(['dbCount', 'tweets', 'users'])); */
-    }
-
-    public function unretweet(Request $request, Tweet $tweet)
-    {
-        /* $request->user()->profile_feed()->detach($tweet->id, ['isRetweet' => 0]);
-        return redirect('dashboard'); */
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\TweetController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TagController;
@@ -40,8 +41,6 @@ Route::get('users/{user}/followings', [UserController::class, 'followings'])->na
 
 Route::get('tweets/{tweet}/like', [TweetController::class, 'like'])->name('tweets.like');
 Route::get('tweets/{tweet}/unlike', [TweetController::class, 'unlike'])->name('tweets.unlike');
-Route::get('tweets/{tweet}/retweet', [TweetController::class, 'retweet'])->name('tweets.retweet');
-Route::get('tweets/{tweet}/unretweet', [TweetController::class, 'unretweet'])->name('tweets.unretweet');
 Route::get('tweets/{tweet}/favorite', [TweetController::class, 'favorite'])->name('tweets.favorite');
 Route::get('tweets/{tweet}/unfavorite', [TweetController::class, 'unfavorite'])->name('tweets.unfavorite');
 Route::get('tweets/{tweet}/likers', [TweetController::class, 'likers'])->name('tweets.likers');
@@ -49,6 +48,11 @@ Route::get('tweets/{user}/getFavorites', [TweetController::class, 'getFavorites'
 Route::get('tweets/{user}/getLikes', [TweetController::class, 'getLikes'])->name('tweets.getLikes');
 Route::get('tweets/{tweet}/add_comment', [TweetController::class, 'add_comment'])->name('tweets.add_comment');
 Route::post('tweets/{tweet}/comment', [TweetController::class, 'comment'])->name('tweets.comment');
+
+/* Routes for Methods in FeedController */
+
+Route::get('feeds/{tweet}/retweet', [FeedController::class, 'retweet'])->name('feeds.retweet');
+Route::get('feeds/{tweet}/unretweet', [FeedController::class, 'unretweet'])->name('feeds.unretweet');
 
 /* Main Route for Dashboard */
 

@@ -131,10 +131,10 @@
 
                 <div class="w-auto flex border-b border-solid border-grey-light">
                     <div class="w-1/8 text-right pl-3 pt-3">
-                        
+
                             <div><a href="#"><img src="{{ asset('storage/' . $tweet->user->image_path) }}"
                                         alt="avatar" class="rounded-full h-12 w-12 mr-2"></a></div>
-                        
+
                     </div>
                     <div class="w-7/8 p-3 pl-0">
 
@@ -159,11 +159,8 @@
                         </div>
 
                         <div class="pb-2">
-                            {{-- Foreach içerisinde dönen tweet'in id'si controller'da parent_id olarak atanaca --}}
-                            {{-- Talebi gönderen kullanıcının id'si user_id olarak atanacak --}}
-                            {{-- Yeni oluşturulacak bu tweet'in id'si otomatik olarak tanımlanıp content'i validate edilecek --}}
-                            {{-- Sonrasında bu yeni tweet parent_id'ye sahip olan bir tweet olarak kaydedilecek. --}}
 
+                            {{-- Comment section --}}
                             <span class="mr-8"><a href="{{ route('tweets.add_comment', $tweet) }}"
                                     class="text-grey-dark hover:no-underline hover:text-blue-light"><i
                                         class="fa fa-comment fa-lg mr-2"></i> 9</a></span>
@@ -181,15 +178,12 @@
                                     </a></span>
                             @endif
 
-
                             {{-- Retweet --}}
-
                             <span class="mr-8"><a href="{{ route('tweets.retweet', $tweet) }}"
                                     class="text-grey-dark hover:no-underline hover:text-green"><i
                                         class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
 
                             {{-- Like --}}
-
                             @if ($tweet->isLikedby(Auth::user()))
                                 <span class="mr-8"><a href="{{ route('tweets.unlike', $tweet) }}"
                                         class="text-grey-dark hover:no-underline hover:text-red"><i
