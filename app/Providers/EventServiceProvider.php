@@ -8,6 +8,8 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use App\Events\CreateUser;
 use App\Listeners\CreateUserAvatarListener;
+use App\Events\CreateTweet;
+use App\Listeners\AddTweetToFeedListener;
 
 
 class EventServiceProvider extends ServiceProvider
@@ -21,11 +23,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-
         CreateUser::class => [
             CreateUserAvatarListener::class,
         ],
-
         CreateTweet::class => [
             AddTweetToFeedListener::class,
         ]
