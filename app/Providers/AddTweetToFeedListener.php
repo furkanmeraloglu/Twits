@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Providers;
 
-use App\Events\CreateTweet;
+use App\Providers\CreateTweet;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use App\Models\Feed;
 
 class AddTweetToFeedListener
 {
@@ -27,12 +26,6 @@ class AddTweetToFeedListener
      */
     public function handle(CreateTweet $event)
     {
-        $tweet = $event->tweet;
-        $feed = new Feed;
-        $feed->tweet_id = $tweet->id;
-        $feed->user_id = $tweet->user->id;
-
-        // Burada gelen tweet'in rt olup olmadığını nasıl anlayacağız? Ona göre feed'e de eklemek gerekecek.
-        $feed->save();
+        //
     }
 }

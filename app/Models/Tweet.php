@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Overtrue\LaravelFavorite\Traits\Favoriteable;
 use Overtrue\LaravelLike\Traits\Likeable;
+use Illuminate\Notifications\Notifiable;
+use App\Events\CreateTweet;
 
 class Tweet extends Model
 {
-    use HasFactory, Likeable, Favoriteable;
+    use HasFactory, Likeable, Favoriteable, Notifiable;
 
     public function parent()
     {
@@ -44,6 +46,10 @@ class Tweet extends Model
         'id'
     ];
 
+    protected $dispatchesEvents = [
+        'created' => CreateTweet::class,
+    ];
+
     public function diverge_tags_from_content($content)
     {
         $tagString = "";
@@ -70,4 +76,6 @@ class Tweet extends Model
             }
         }
     }
+
+    
 }

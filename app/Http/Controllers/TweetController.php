@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
+
+
 class TweetController extends Controller
 {
     // Bu controller'da oluşturulan resource olmayan tüm metotların rotasını web.php'den kontrol et.
@@ -89,6 +91,11 @@ class TweetController extends Controller
         return redirect('/dashboard');
     }
 
+    public function retweet(Tweet $tweet)
+    {
+        //
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -129,6 +136,9 @@ class TweetController extends Controller
         $tweet->user_id = $request->user()->id;
         $tweet->content = $request->content;
         $tweet->save();
+        
+
+        
 
         $tweet->set_hashtags($tweet->diverge_tags_from_content($tweet->content));   // Tweet'in taglerini kaydediyoruz.
                                 // Atılan tweet'i kullanıcının feed'ine de ekliyoruz.

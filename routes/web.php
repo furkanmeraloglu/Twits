@@ -48,6 +48,7 @@ Route::get('tweets/{user}/getFavorites', [TweetController::class, 'getFavorites'
 Route::get('tweets/{user}/getLikes', [TweetController::class, 'getLikes'])->name('tweets.getLikes');
 Route::get('tweets/{tweet}/add_comment', [TweetController::class, 'add_comment'])->name('tweets.add_comment');
 Route::post('tweets/{tweet}/comment', [TweetController::class, 'comment'])->name('tweets.comment');
+Route::post('tweets/{tweet}/retweet', [TweetController::class, 'retweet'])->name('tweets.retweet');
 
 /* Routes for Methods in FeedController */
 
