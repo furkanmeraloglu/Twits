@@ -29,7 +29,7 @@ class EventServiceProvider extends ServiceProvider
         CreateTweet::class => [
             AddTweetToFeedListener::class,
         ]
-
+        // Çalışıyor olması gerekiyor yav. 
     ];
 
     /**
@@ -42,5 +42,5 @@ class EventServiceProvider extends ServiceProvider
         //
     }
 
-    
+
 }
