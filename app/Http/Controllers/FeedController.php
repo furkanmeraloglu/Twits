@@ -15,6 +15,12 @@ class FeedController extends Controller
 
     public function retweet(Request $request, Tweet $tweet)
     {
+        $feed = new Feed;
+        $feed->tweet_id = $tweet->id;
+        $feed->user_id = $request->user()->id;
+        $feed->isRetweet = true;
+        $feed->save();
+        return redirect('dashboard');
         /* $request->user()->profile_feed()->attach($tweet->id);
         $request->user()->profile_feed()->attach($tweet->id, ['isRetweet' => 1]);
         $dbQuery = DB::select('select isRetweet, user_id, tweet_id from feed where tweet_id = ' . $tweet->id);
@@ -26,6 +32,10 @@ class FeedController extends Controller
 
     public function unretweet(Request $request, Tweet $tweet)
     {
+        $feed = Feed::where('tweet_id', '=', $tweet->id)->get();
+        $feed->isRetweet = false;
+        $feed->save();
+
         /* $request->user()->profile_feed()->detach($tweet->id, ['isRetweet' => 0]);
         return redirect('dashboard'); */
     }
@@ -39,7 +49,6 @@ class FeedController extends Controller
     {
         //
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -49,7 +58,6 @@ class FeedController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -60,7 +68,6 @@ class FeedController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -71,7 +78,6 @@ class FeedController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -82,7 +88,6 @@ class FeedController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -94,7 +99,6 @@ class FeedController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

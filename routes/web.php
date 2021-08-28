@@ -7,6 +7,7 @@ use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Tweet;
+use App\Models\Feed;
 use Illuminate\Support\Facades\Auth;
 
 /*

@@ -163,7 +163,9 @@
                             {{-- Comment section --}}
                             <span class="mr-8"><a href="{{ route('tweets.add_comment', $tweet) }}"
                                     class="text-grey-dark hover:no-underline hover:text-blue-light"><i
-                                        class="fa fa-comment fa-lg mr-2"></i> 9</a></span>
+                                        class="fa fa-comment fa-lg mr-2"></i>
+                                    @if ($tweet->children()->count()) {{ $tweet->children()->count() }}
+                                    @endif</a></span>
 
                             {{-- bookmark section --}}
                             @if ($tweet->isFavoritedby(Auth::user()))
@@ -179,9 +181,15 @@
                             @endif
 
                             {{-- Retweet --}}
-                            <span class="mr-8"><a href="{{ route('tweets.retweet', $tweet) }}"
+                            {{-- @if ($tweet)
+                            <span class="mr-8"><a href="{{ route('feeds.unretweet', $tweet) }}"
                                     class="text-grey-dark hover:no-underline hover:text-green"><i
                                         class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
+                            @else --}}
+                            <span class="mr-8"><a href="{{ route('feeds.retweet', $tweet) }}"
+                                    class="text-grey-dark hover:no-underline hover:text-green"><i
+                                        class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
+                            {{-- @endif --}}
 
                             {{-- Like --}}
                             @if ($tweet->isLikedby(Auth::user()))
