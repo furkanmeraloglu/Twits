@@ -72,8 +72,8 @@
         <div class="w-full lg:w-1/4 pl-4 lg:pl-0 pr-6 mt-8 mb-4">
             <h1><a href="#" class="text-black font-bold no-underline hover:underline">{{ $user->name }}</a>
             </h1>
-            <div class="mb-4"><a href="#" class="text-grey-darker no-underline hover:underline">@
-                    {{ $user->nickname }} </a></div>
+            <div class="mb-4"><a href="#" class="text-grey-darker no-underline hover:underline">
+                    {{"@" . $user->nickname }} </a></div>
 
             <div class="mb-4">
                 {{ $user->bio }}
@@ -121,7 +121,7 @@
                             <div>
                                 <span class="font-bold"><a href="{{ route('users.show', $following) }}"
                                         class="text-black">{{ $following->name }}</a></span>
-                                <span class="text-grey-dark">@ {{ $following->nickname }}</span>
+                                <span class="text-grey-dark"> {{"@" . $following->nickname }}</span>
 
                                 <span class="text-grey-dark">{{ $following->created_at }}</span>
                             </div>
