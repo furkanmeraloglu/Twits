@@ -6,12 +6,16 @@ use App\Models\Tweet;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Events\CreateTweet;
+
+
 
 
 
 
 class TweetController extends Controller
 {
+    
     // Bu controller'da oluşturulan resource olmayan tüm metotların rotasını web.php'den kontrol et.
 
     // Giriş yapmış kullanıcı başkasına ait bir tweet'i beğenirse, o tweet beğenilenler listesine kullanıcı id'si ve tweet id'si ile kaydolur.
@@ -135,11 +139,9 @@ class TweetController extends Controller
         $tweet = new Tweet;
         $tweet->user_id = $request->user()->id;
         $tweet->content = $request->content;
+        
         $tweet->save();
         
-
-        
-
         $tweet->set_hashtags($tweet->diverge_tags_from_content($tweet->content));   // Tweet'in taglerini kaydediyoruz.
                                 // Atılan tweet'i kullanıcının feed'ine de ekliyoruz.
 

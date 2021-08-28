@@ -14,7 +14,7 @@ class AddTweetToFeedListener
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CreateTweet $event)
     {
         //
     }
@@ -29,6 +29,7 @@ class AddTweetToFeedListener
     {
         $tweet = $event->tweet;
         $feed = new Feed;
+        
         $feed->tweet_id = $tweet->id;
         $feed->user_id = $tweet->user->id;
 
