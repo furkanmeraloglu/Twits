@@ -32,6 +32,7 @@ class FeedController extends Controller
 
     public function unretweet(Request $request, Tweet $tweet)
     {
+        /* $request->user() kullanılmalı burası user'a bağlı şekilde tekrar düzenlenecek. */ 
         $feed = Feed::where('tweet_id', '=', $tweet->id)->get();
         $feed->isRetweet = false;
         $feed->save();

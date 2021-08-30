@@ -132,16 +132,14 @@
                 <div class="w-auto flex border-b border-solid border-grey-light">
                     <div class="w-1/8 text-right pl-3 pt-3">
                         {{-- tweet retweet or comment icon --}}
-                        @if ($tweet->children()->count())
-                        <div><i class="fa fa-comment text-grey-dark mr-2"></i></div>
-                        @endif
                         <div><a href="#"><img src="{{ asset('storage/' . $tweet->user->image_path) }}" alt="avatar"
                                     class="rounded-full h-12 w-12 mr-2"></a></div>
-
                     </div>
                     <div class="w-7/8 p-3 pl-0">
-                        @if ($tweet->children()->count())
-                        <div class="text-xs text-grey-dark">{{"@ Commented"}}</div>
+                        @if ($tweet->parent_id)
+                            <div><i class="fa fa-comment text-grey-dark mr-2"></i><span
+                                    class="text-xs text-grey-dark">{{ 'Replys to: ' . '@' . $tweet->commentedUserNickname }}</span>
+                            </div>
                         @endif
                         <div class="flex justify-between">
                             <div>

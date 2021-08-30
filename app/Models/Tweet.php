@@ -40,6 +40,8 @@ class Tweet extends Model
 
     protected $fillable = [
         'content',
+        'commentedUserNickname',
+        'parent_id'
     ];
 
     protected $guarded = [

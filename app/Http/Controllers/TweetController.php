@@ -83,9 +83,10 @@ class TweetController extends Controller
         $Childtweet->user_id = $request->user()->id;
         $Childtweet->content = $request->content;
         $Childtweet->parent_id = $tweet->id;
+        $Childtweet->commentedUserNickname = $tweet->user->nickname;
         $Childtweet->save();
         $Childtweet->set_hashtags($Childtweet->diverge_tags_from_content($Childtweet->content));   // Tweet'in taglerini kaydediyoruz.
-        // Atılan tweet'i kullanıcının feed'ine de eklemeK için bir event ve listener oluşturuldu.
+        
         return redirect('/dashboard');
     }
 

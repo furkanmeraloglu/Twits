@@ -20,6 +20,7 @@ class CreateTweetsTable extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('commentedUserNickname')->nullable();
             $table->text('content');
             $table->timestamps();
         });
