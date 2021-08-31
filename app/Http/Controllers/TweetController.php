@@ -137,7 +137,8 @@ class TweetController extends Controller
      */
     public function show(Tweet $tweet)
     {
-        //
+/*         buraya tweet'in commentlerini ve retweet eden userlarını alacak ve onu tweet.show'a göndereceğiz... */
+        return view('tweet.show', compact('tweet'));
     }
     /**
      * Show the form for editing the specified resource.
