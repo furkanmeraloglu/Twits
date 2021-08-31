@@ -15,19 +15,14 @@ class FeedController extends Controller
 
     public function retweet(Request $request, Tweet $tweet)
     {
+        
         $feed = new Feed;
         $feed->tweet_id = $tweet->id;
         $feed->user_id = $request->user()->id;
         $feed->isRetweet = true;
         $feed->save();
         return redirect('dashboard');
-        /* $request->user()->profile_feed()->attach($tweet->id);
-        $request->user()->profile_feed()->attach($tweet->id, ['isRetweet' => 1]);
-        $dbQuery = DB::select('select isRetweet, user_id, tweet_id from feed where tweet_id = ' . $tweet->id);
-        $dbCount = count($dbQuery);
-        $tweets = Tweet::all();
-        $users = User::all();
-        return view('dashboard', compact(['dbCount', 'tweets', 'users'])); */
+       
     }
 
     public function unretweet(Request $request, Tweet $tweet)

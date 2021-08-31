@@ -150,15 +150,11 @@
                                 <span class="text-grey-dark"
                                     title="{{ $tweet->created_at }}">{{ $tweet->created_at->diffForHumans() }}</span>
                             </div>
-
                         </div>
-
-                        <div>
-                            <div class="mb-4">
-
-                                <p class="mb-6">{{ $tweet->content }}</p>
-
-                            </div>
+                    <div>
+                        <div class="mb-4">
+                            <p class="mb-6">{{ $tweet->content }}</p>
+                        </div>
                         </div>
                         <div class="pb-2">
 
@@ -185,16 +181,17 @@
                     </a></span>
             @endif
 
-            {{-- Retweet --}}
-            {{-- @if ($tweet)
-                            <span class="mr-8"><a href="{{ route('feeds.unretweet', $tweet) }}"
-                                    class="text-grey-dark hover:no-underline hover:text-green"><i
-                                        class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
-                            @else --}}
-            <span class="mr-8"><a href="{{ route('feeds.retweet', $tweet) }}"
-                    class="text-grey-dark hover:no-underline hover:text-green"><i class="fa fa-retweet fa-lg mr-2"></i>
-                    29</a></span>
-            {{-- @endif --}}
+
+            @if ($tweet)
+                <span class="mr-8"><a href="{{ route('feeds.unretweet', $tweet) }}"
+                        class="text-grey-dark hover:no-underline hover:text-green"><i
+                            class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
+            @else
+                <span class="mr-8"><a href="{{ route('feeds.retweet', $tweet) }}"
+                        class="text-grey-dark hover:no-underline hover:text-green"><i
+                            class="fa fa-retweet fa-lg mr-2"></i>
+                        0</a></span>
+            @endif
 
             {{-- Like --}}
             @if ($tweet->isLikedby(Auth::user()))
