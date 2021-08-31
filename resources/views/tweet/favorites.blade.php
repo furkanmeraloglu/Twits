@@ -144,40 +144,45 @@
                         <div class="pb-2">
 
                             {{-- Comment section --}}
-                            <span class="mr-8"><a href="{{ route('tweets.add_comment', $tweet) }}"
-                                    class="text-grey-dark hover:no-underline hover:text-blue-light"><i
-                                        class="fa fa-comment fa-lg mr-2"></i> 9</a></span>
+                            <span class="mr-8"><a href="{{ route('tweets.add_comment', $favorite) }}"
+                                class="text-grey-dark hover:no-underline hover:text-blue-light"><i
+                                    class="fa fa-comment fa-lg mr-2"></i>
+                                @if ($favorite->children()->count())
+                                    {{ $favorite->children()->count() }}
+                                @else
+                            </a>0</span>
+                                @endif
 
                             {{-- bookmark section --}}
-                            @if ($tweet->isFavoritedby(Auth::user()))
-                                <span class="mr-8"><a href="{{ route('tweets.unfavorite', $tweet) }}"
+                            @if ($favorite->isFavoritedby(Auth::user()))
+                                <span class="mr-8"><a href="{{ route('tweets.unfavorite', $favorite) }}"
                                         class="text-grey-dark hover:no-underline hover:text-blue-light"><i
-                                            class="fa fa-bookmark fa-lg mr-2 text-red-700"></i>{{ $tweet->favoriters()->count() }}
+                                            class="fa fa-bookmark fa-lg mr-2 text-red-700"></i>{{ $favorite->favoriters()->count() }}
                                     </a></span>
                             @else
-                                <span class="mr-8"><a href="{{ route('tweets.favorite', $tweet) }}"
+                                <span class="mr-8"><a href="{{ route('tweets.favorite', $favorite) }}"
                                         class="text-grey-dark hover:no-underline hover:text-blue-light"><i
-                                            class="fa fa-bookmark fa-lg mr-2"></i>{{ $tweet->favoriters()->count() }}
+                                            class="fa fa-bookmark fa-lg mr-2"></i>{{ $favorite->favoriters()->count() }}
                                     </a></span>
                             @endif
 
                             {{-- Retweet --}}
-                            <span class="mr-8"><a href="{{ route('feeds.retweet', $tweet) }}"
+                            <span class="mr-8"><a href="{{ route('feeds.retweet', $favorite) }}"
                                     class="text-grey-dark hover:no-underline hover:text-green"><i
                                         class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
 
                             {{-- Like --}}
-                            @if ($tweet->isLikedby(Auth::user()))
-                                <span class="mr-8"><a href="{{ route('tweets.unlike', $tweet) }}"
+                            @if ($favorite->isLikedby(Auth::user()))
+                                <span class="mr-8"><a href="{{ route('tweets.unlike', $favorite) }}"
                                         class="text-grey-dark hover:no-underline hover:text-red"><i
                                             class="fa fa-heart fa-lg mr-2 text-red-700"></i><a
-                                            href="{{ route('tweets.likers', $tweet) }}">
-                                            {{ $tweet->likers()->count() }}</a></a></span>
+                                            href="{{ route('tweets.likers', $favorite) }}">
+                                            {{ $favorite->likers()->count() }}</a></a></span>
                             @else
-                                <span class="mr-8"><a href="{{ route('tweets.like', $tweet) }}"
-                                        class="text-grey-dark hover:no-underline hover:text-red"><i @if ($tweet->likers()->count() > 0)
+                                <span class="mr-8"><a href="{{ route('tweets.like', $favorite) }}"
+                                        class="text-grey-dark hover:no-underline hover:text-red"><i @if ($favorite->likers()->count() > 0)
                                             class="fa fa-heart fa-lg mr-2"></i><a
-                                            href="{{ route('tweets.likers', $tweet) }}">{{ $tweet->likers()->count() }}</a></a></span>
+                                            href="{{ route('tweets.likers', $favorite) }}">{{ $favorite->likers()->count() }}</a></a></span>
                             @else
                                 class="fa fa-heart fa-lg mr-2"></i>0</a></span>
                             @endif

@@ -19,8 +19,7 @@
             <div class="w-full lg:w-1/2">
                 <ul class="list-reset flex">
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent border-teal">
-                        <a href="{{ route('tweets.index') }}"
-                            class="text-grey-darker no-underline hover:no-underline">
+                        <a href="{{ route('tweets.index') }}" class="text-grey-darker no-underline hover:no-underline">
                             <div class="text-sm font-bold tracking-tight mb-1">Tweets</div>
                             <div class="text-lg tracking-tight font-bold text-teal">
                                 {{ Auth::user()->tweets()->count() }}</div>
@@ -132,7 +131,8 @@
                 <div class="w-auto flex border-b border-solid border-grey-light">
                     <div class="w-1/8 text-right pl-3 pt-3">
                         {{-- tweet retweet or comment icon --}}
-                        <div><a href="{{ route('users.show', $tweet->user) }}"><img src="{{ asset('storage/' . $tweet->user->image_path) }}" alt="avatar"
+                        <div><a href="{{ route('users.show', $tweet->user) }}"><img
+                                    src="{{ asset('storage/' . $tweet->user->image_path) }}" alt="avatar"
                                     class="rounded-full h-12 w-12 mr-2"></a></div>
                     </div>
                     <div class="w-7/8 p-3 pl-0">
@@ -151,10 +151,10 @@
                                     title="{{ $tweet->created_at }}">{{ $tweet->created_at->diffForHumans() }}</span>
                             </div>
                         </div>
-                    <div>
-                        <div class="mb-4">
-                            <p class="mb-6">{{ $tweet->content }}</p>
-                        </div>
+                        <div>
+                            <div class="mb-4">
+                                <p class="mb-6">{{ $tweet->content }}</p>
+                            </div>
                         </div>
                         <div class="pb-2">
 
@@ -190,7 +190,7 @@
                 <span class="mr-8"><a href="{{ route('feeds.retweet', $tweet) }}"
                         class="text-grey-dark hover:no-underline hover:text-green"><i
                             class="fa fa-retweet fa-lg mr-2"></i>
-                        29</a></span>
+                        0</a></span>
             @endif
 
             {{-- Like --}}
