@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Feed;
 use App\Models\Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FeedController extends Controller
 {
@@ -15,6 +16,7 @@ class FeedController extends Controller
 
     public function retweet(Request $request, Tweet $tweet)
     {
+<<<<<<< HEAD
         
         $feed = new Feed;
         $feed->tweet_id = $tweet->id;
@@ -23,19 +25,23 @@ class FeedController extends Controller
         $feed->save();
         return redirect('dashboard');
        
+=======
+            $feed = new Feed;
+            $feed->tweet_id = $tweet->id;
+            $feed->user_id = $request->user()->id;
+            $feed->isRetweet = true;
+            $feed->save();
+            return redirect('dashboard');
+>>>>>>> 3bf3745d6833904cd0120c593d2144b0ad69c5c9
     }
 
     public function unretweet(Request $request, Tweet $tweet)
     {
-        /* $request->user() kullanılmalı burası user'a bağlı şekilde tekrar düzenlenecek. */ 
-        $feed = Feed::where('tweet_id', '=', $tweet->id)->get();
-        $feed->isRetweet = false;
-        $feed->save();
-
-        /* $request->user()->profile_feed()->detach($tweet->id, ['isRetweet' => 0]);
-        return redirect('dashboard'); */
+        /* DB::table('feeds')->where('user_id', '=', $request->user()->id and 'tweet_id', '=', $tweet->id)->delete(); */
+        $feedToDelete = Feed::where('user_id', '=', $request->user()->id and 'tweet_id', '=', $tweet->id);
+        $feedToDelete->delete();
+        return redirect('dashboard');
     }
-
     /**
      * Display a listing of the resource.
      *

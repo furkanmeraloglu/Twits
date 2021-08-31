@@ -132,7 +132,7 @@
                 <div class="w-auto flex border-b border-solid border-grey-light">
                     <div class="w-1/8 text-right pl-3 pt-3">
                         {{-- tweet retweet or comment icon --}}
-                        <div><a href="#"><img src="{{ asset('storage/' . $tweet->user->image_path) }}" alt="avatar"
+                        <div><a href="{{ route('users.show', $tweet->user) }}"><img src="{{ asset('storage/' . $tweet->user->image_path) }}" alt="avatar"
                                     class="rounded-full h-12 w-12 mr-2"></a></div>
                     </div>
                     <div class="w-7/8 p-3 pl-0">
@@ -143,7 +143,7 @@
                         @endif
                         <div class="flex justify-between">
                             <div>
-                                <span class="font-bold"><a href="#"
+                                <span class="font-bold"><a href="{{ route('users.show', $tweet->user) }}"
                                         class="text-black">{{ $tweet->user->name }}</a></span>
                                 <span class="text-grey-dark">{{ '@' . $tweet->user->nickname }}</span>
 
@@ -181,16 +181,28 @@
                     </a></span>
             @endif
 
+<<<<<<< HEAD
 
             @if ($tweet)
                 <span class="mr-8"><a href="{{ route('feeds.unretweet', $tweet) }}"
                         class="text-grey-dark hover:no-underline hover:text-green"><i
                             class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
+=======
+            {{-- Retweet --}}
+            @if ($tweet->feeds()->where('user_id', '=', Auth::user()->id and 'isRetweet', '=', true))
+                <span class="mr-8"><a href="{{ route('feeds.unretweet', $tweet) }}"
+                        class="text-grey-dark hover:no-underline hover:text-green"><i
+                            class="fa fa-retweet fa-lg mr-2"></i> Rete </a></span>
+>>>>>>> 3bf3745d6833904cd0120c593d2144b0ad69c5c9
             @else
                 <span class="mr-8"><a href="{{ route('feeds.retweet', $tweet) }}"
                         class="text-grey-dark hover:no-underline hover:text-green"><i
                             class="fa fa-retweet fa-lg mr-2"></i>
+<<<<<<< HEAD
                         0</a></span>
+=======
+                        29</a></span>
+>>>>>>> 3bf3745d6833904cd0120c593d2144b0ad69c5c9
             @endif
 
             {{-- Like --}}
