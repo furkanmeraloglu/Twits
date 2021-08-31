@@ -181,28 +181,16 @@
                     </a></span>
             @endif
 
-<<<<<<< HEAD
-
-            @if ($tweet)
-                <span class="mr-8"><a href="{{ route('feeds.unretweet', $tweet) }}"
-                        class="text-grey-dark hover:no-underline hover:text-green"><i
-                            class="fa fa-retweet fa-lg mr-2"></i> 29</a></span>
-=======
             {{-- Retweet --}}
             @if ($tweet->feeds()->where('user_id', '=', Auth::user()->id and 'isRetweet', '=', true))
                 <span class="mr-8"><a href="{{ route('feeds.unretweet', $tweet) }}"
                         class="text-grey-dark hover:no-underline hover:text-green"><i
                             class="fa fa-retweet fa-lg mr-2"></i> Rete </a></span>
->>>>>>> 3bf3745d6833904cd0120c593d2144b0ad69c5c9
             @else
                 <span class="mr-8"><a href="{{ route('feeds.retweet', $tweet) }}"
                         class="text-grey-dark hover:no-underline hover:text-green"><i
                             class="fa fa-retweet fa-lg mr-2"></i>
-<<<<<<< HEAD
-                        0</a></span>
-=======
                         29</a></span>
->>>>>>> 3bf3745d6833904cd0120c593d2144b0ad69c5c9
             @endif
 
             {{-- Like --}}

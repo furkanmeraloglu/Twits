@@ -16,23 +16,12 @@ class FeedController extends Controller
 
     public function retweet(Request $request, Tweet $tweet)
     {
-<<<<<<< HEAD
-        
-        $feed = new Feed;
-        $feed->tweet_id = $tweet->id;
-        $feed->user_id = $request->user()->id;
-        $feed->isRetweet = true;
-        $feed->save();
-        return redirect('dashboard');
-       
-=======
             $feed = new Feed;
             $feed->tweet_id = $tweet->id;
             $feed->user_id = $request->user()->id;
             $feed->isRetweet = true;
             $feed->save();
             return redirect('dashboard');
->>>>>>> 3bf3745d6833904cd0120c593d2144b0ad69c5c9
     }
 
     public function unretweet(Request $request, Tweet $tweet)
