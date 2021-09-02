@@ -59,7 +59,6 @@ Route::get('feeds/{tweet}/unretweet', [FeedController::class, 'unretweet'])->nam
 /* Main Route for Dashboard */
 
 Route::get('/dashboard', function () {
-    ;
     $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
     $userIds = Auth::user()->followings->pluck('id')->toArray();
     $userIds[] = Auth::user()->id;
