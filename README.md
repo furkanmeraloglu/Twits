@@ -1,8 +1,6 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <h1 align="center"><strong>Baby Twitter</strong></h1>
-<h3 align="center">Creators: <a href="https://github.com/yemrealtanay" target="_blank">Yunus Emre Altanay</a> || <a href="https://github.com/furkanmeraloglu" target="_blank">Furkan Meraloğlu</a></h3>
-<h4 align="center">Our Mentor and Supporter: <a href="https://github.com/ugurarici" target="_blank">Uğur Arıcı</a></h4>
 
 ## About Baby-Twitter
 
@@ -38,3 +36,5 @@ We, as enthusiastic learners and new developers, kicked of this project in order
   - Enjoy the baby twitter :star_struck:
 
 Please feel free to contribute, open an issue and test the application. It is more than welcome to hear from you about the project and its weaknesses. 
+
+Contributors: <a href="https://github.com/yemrealtanay" target="_blank">Yunus Emre Altanay</a>, <a href="https://github.com/ugurarici" target="_blank">Uğur Arıcı</a>, <a href="https://github.com/furkanmeraloglu" target="_blank">Furkan Meraloğlu</a>
