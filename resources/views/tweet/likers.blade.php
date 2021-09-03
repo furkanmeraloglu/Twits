@@ -1,7 +1,7 @@
 <x-app-layout>
 
     @if (Auth::user()->bg_image_path === null)
-        <div class="hero h-64 bg-cover h-112 full" style="background-image: url(https://source.unsplash.com/1500x500)">
+        <div class="hero h-64 bg-cover h-112 full" style="background-image: url({{ asset('storage/' . "default_cover.jpg") }})">
         </div>
     @else
         <div class="hero h-64 bg-cover h-112 full"
@@ -11,10 +11,10 @@
     <div class="bg-white shadow">
         <div class="container mx-auto flex flex-col lg:flex-row items-center lg:relative">
             <div class="w-full lg:w-1/4">
-              
+
                     <img src="{{ asset('storage/' . Auth::user()->image_path) }}" alt="logo"
                         class="rounded-full h-48 w-48 lg:absolute lg:pin-l lg:pin-t lg:-mt-24">
-              
+
             </div>
             <div class="w-full lg:w-1/2">
                 <ul class="list-reset flex">
@@ -99,10 +99,10 @@
 
             <div class="p-3 text-lg font-bold border-b border-solid border-grey-light">
                 <h1 class="text-black mr-6 no-underline hover-underline">Likers</h1>
-                
+
             </div>
 
-            
+
 
             {{-- User card --}}
 
@@ -110,10 +110,10 @@
 
                 <div class="flex border-b border-solid border-grey-light">
                     <div class="w-1/8 text-right pl-3 pt-3">
-                      
+
                             <div><a href="#"><img src="{{ asset('storage/' . $liker->image_path) }}" alt="avatar"
                                         class="rounded-full h-12 w-12 mr-2"></a></div>
-                     
+
                     </div>
                     <div class="w-7/8 p-3 pl-0">
 

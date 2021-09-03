@@ -15,7 +15,7 @@ use App\Events\CreateTweet;
 
 class TweetController extends Controller
 {
-    
+
     // Bu controller'da oluşturulan resource olmayan tüm metotların rotasını web.php'den kontrol et.
     // Giriş yapmış kullanıcı başkasına ait bir tweet'i beğenirse, o tweet beğenilenler listesine kullanıcı id'si ve tweet id'si ile kaydolur.
     // FrontEnd'de kullanıcı profilinde oluşturulacak bir beğenilen tweetler (likes) bağlantısı ile o kullanıcının beğendiği tüm tweetler listelenebilir.
@@ -81,12 +81,12 @@ class TweetController extends Controller
         ]);
         $Childtweet = new Tweet;
         $Childtweet->user_id = $request->user()->id;
-        $Childtweet->content = $request->content;
+        $Childtweet->content = $request->input("content");
         $Childtweet->parent_id = $tweet->id;
         $Childtweet->commentedUserNickname = $tweet->user->nickname;
         $Childtweet->save();
         $Childtweet->set_hashtags($Childtweet->diverge_tags_from_content($Childtweet->content));   // Tweet'in taglerini kaydediyoruz.
-        
+
         return redirect('/dashboard');
     }
 
@@ -124,7 +124,7 @@ class TweetController extends Controller
         ]);
         $tweet = new Tweet;
         $tweet->user_id = $request->user()->id;
-        $tweet->content = $request->content;
+        $tweet->content = $request->input("content");
         $tweet->save();
         $tweet->set_hashtags($tweet->diverge_tags_from_content($tweet->content));   // Tweet'in taglerini kaydediyoruz.
         return redirect('/dashboard');
@@ -137,8 +137,14 @@ class TweetController extends Controller
      */
     public function show(Tweet $tweet)
     {
-/*         buraya tweet'in commentlerini ve retweet eden userlarını alacak ve onu tweet.show'a göndereceğiz... */
-        return view('tweet.show', compact('tweet'));
+        /*buraya tweet'in commentlerini ve retweet eden userlarını alacak ve onu tweet.show'a göndereceğiz*/
+        if($tweet->parent_id != null){
+            $comments = Tweet::Where('parent_id', $tweet->parent_id)->orderBy('created_at', 'desc')->get();
+            return view('tweet.show', compact('tweet', 'comments'));
+        }else{
+            return view('tweet.show', compact('tweet'));
+        }
+
     }
     /**
      * Show the form for editing the specified resource.
