@@ -179,7 +179,7 @@
                             <span class="mr-8"><a href="{{ route('tweets.unlike', $tweet) }}"
                                     class="text-grey-dark hover:no-underline hover:text-red"><i
                                         class="fa fa-heart fa-lg mr-2 text-red-700"></i><a
-                                        href="{{ route('tweets.likers', $tweet->likeable) }}">
+                                        href="{{ route('tweets.likers', $tweet) }}">
                                         {{ $tweet->likers()->count() }}</a></a></span>
                         @else
                             <span class="mr-8"><a href="{{ route('tweets.like', $tweet) }}"
