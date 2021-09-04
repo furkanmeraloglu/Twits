@@ -137,14 +137,16 @@ class TweetController extends Controller
      */
     public function show(Tweet $tweet)
     {
-        /*buraya tweet'in commentlerini ve retweet eden userlarını alacak ve onu tweet.show'a göndereceğiz*/
-        if($tweet->parent_id != null){
-            $comments = Tweet::Where('parent_id', $tweet->parent_id)->orderBy('created_at', 'desc')->get();
-            return view('tweet.show', compact('tweet', 'comments'));
-        }else{
-            return view('tweet.show', compact('tweet'));
+        $users = User::all();
+        if ($tweet->children())
+        {
+            $tweetComments = $tweet->children()->get();
+            return view('tweet.show', compact('tweet', 'tweetComments', 'users'));
         }
-
+        else
+        {
+            return view('tweet.show', compact('tweet', 'users'));
+        }
     }
     /**
      * Show the form for editing the specified resource.

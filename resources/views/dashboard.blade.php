@@ -1,7 +1,8 @@
 <x-app-layout>
 
     @if (Auth::user()->bg_image_path === null)
-        <div class="hero h-64 bg-cover h-112 full" style="background-image: url({{ asset('storage/' . "default_cover.jpg") }})">
+        <div class="hero h-64 bg-cover h-112 full"
+            style="background-image: url({{ asset('storage/' . 'default_cover.jpg') }})">
         </div>
     @else
         <div class="hero h-64 bg-cover h-112 full"
@@ -152,9 +153,11 @@
                             </div>
                         </div>
                         <div>
-                            <div class="mb-4">
-                                <p class="mb-6">{{ $tweet->content }}</p>
-                            </div>
+                            <a href="{{ route('tweets.show', $tweet) }}">
+                                <div class="mb-4">
+                                    <p class="mb-6">{{ $tweet->content }}</p>
+                                </div>
+                            </a>
                         </div>
                         <div class="pb-2">
 
