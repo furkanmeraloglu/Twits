@@ -26,8 +26,7 @@ class FeedController extends Controller
 
     public function unretweet(Request $request, Tweet $tweet)
     {
-        /* DB::table('feeds')->where('user_id', '=', $request->user()->id and 'tweet_id', '=', $tweet->id)->delete(); */
-        $feedToDelete = Feed::where('user_id', '=', $request->user()->id and 'tweet_id', '=', $tweet->id);
+        $feedToDelete = Feed::where('tweet_id', '=', $tweet->id);
         $feedToDelete->delete();
         return redirect('dashboard');
     }

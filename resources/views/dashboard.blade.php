@@ -185,16 +185,16 @@
             @endif
 
             {{-- Retweet --}}
-            @if ($tweet->feeds()->where('user_id', '=', Auth::user()->id and 'isRetweet', '=', true))
-                <span class="mr-8"><a href="{{ route('feeds.unretweet', $tweet) }}"
-                        class="text-grey-dark hover:no-underline hover:text-green"><i
-                            class="fa fa-retweet fa-lg mr-2"></i> Rete </a></span>
-            @else
+            
                 <span class="mr-8"><a href="{{ route('feeds.retweet', $tweet) }}"
                         class="text-grey-dark hover:no-underline hover:text-green"><i
                             class="fa fa-retweet fa-lg mr-2"></i>
-                        0</a></span>
-            @endif
+                        RT</a></span>
+
+                <span class="mr-8"><a href="{{ route('feeds.unretweet', $tweet) }}"
+                        class="text-grey-dark hover:no-underline hover:text-green"><i
+                            class="fa fa-retweet fa-lg mr-2"></i>
+                        UnRT</a></span>
 
             {{-- Like --}}
             @if ($tweet->isLikedby(Auth::user()))
