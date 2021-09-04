@@ -121,7 +121,11 @@
 
                     </div>
                     <div class="w-7/8 p-3 pl-0">
-
+                        @if ($favorite->parent_id)
+                            <div><i class="fa fa-comment text-grey-dark mr-2"></i><span
+                                    class="text-xs text-grey-dark">{{ 'Replys to: ' . '@' . $favorite->commentedUserNickname }}</span>
+                            </div>
+                        @endif
                         <div class="flex justify-between">
                             <div>
                                 <span class="font-bold"><a href="#"
@@ -134,11 +138,11 @@
                         </div>
 
                         <div>
+                            <a href="{{ route('tweets.show', $favorite) }}">
                             <div class="mb-4">
-
                                 <p class="mb-6">{{ $favorite->content }}</p>
-
                             </div>
+                            </a>
                         </div>
 
                         <div class="pb-2">

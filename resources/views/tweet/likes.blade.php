@@ -130,11 +130,11 @@
                         </div>
 
                         <div>
+                            <a href="{{ route('tweets.show', $like->likeable) }}">
                             <div class="mb-4">
-
                                 <p class="mb-6">{{ $like->likeable->content }}</p>
-
                             </div>
+                            </a>
                         </div>
 
                         <div class="pb-2">

@@ -115,7 +115,11 @@
                                     class="rounded-full h-12 w-12 mr-2"></a></div>
                     </div>
                     <div class="w-7/8 p-3 pl-0">
-
+                        @if ($tweet->parent_id)
+                            <div><i class="fa fa-comment text-grey-dark mr-2"></i><span
+                                    class="text-xs text-grey-dark">{{ 'Replys to: ' . '@' . $tweet->commentedUserNickname }}</span>
+                            </div>
+                        @endif
                         <div class="flex justify-between">
                             <div>
                                 <span class="font-bold"><a href="{{ route('users.show', $tweet->user) }}"
@@ -129,11 +133,11 @@
                         </div>
 
                         <div>
+                            <a href="{{ route('tweets.show', $tweet) }}">
                             <div class="mb-4">
-
                                 <p class="mb-6">{{ $tweet->content }}</p>
-
                             </div>
+                            </a>
                         </div>
 
                         <div class="pb-2">
@@ -146,7 +150,7 @@
                                         {{ $tweet->children()->count() }}
                                     @else
                                 </a>0</span>
-            @endif
+                                    @endif
 
             {{-- bookmark section --}}
             @if ($tweet->isFavoritedby(Auth::user()))

@@ -121,6 +121,11 @@
 
                     </div>
                     <div class="w-7/8 p-3 pl-0">
+                        @if ($tweet->parent_id)
+                        <div><i class="fa fa-comment text-grey-dark mr-2"></i><span
+                                class="text-xs text-grey-dark">{{ 'Replys to: ' . '@' . $tweet->commentedUserNickname }}</span>
+                        </div>
+                        @endif
 
                         <div class="flex justify-between">
                             <div>
@@ -134,13 +139,13 @@
                         </div>
 
                         <div>
+                            <a href="{{ route('tweets.show', $tweet) }}">
                             <div class="mb-4">
-
                                 <p class="mb-6">{{ $tweet->content }}</p>
-
                             </div>
+                            </a>
+                    
                         </div>
-
                         <div class="pb-2">
 
                             {{-- Comment section --}}

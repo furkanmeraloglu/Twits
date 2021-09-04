@@ -134,8 +134,13 @@
 
                         {{-- Comment section --}}
                         <span class="mr-8"><a href="{{ route('tweets.add_comment', $tweet) }}"
-                                class="text-grey-dark hover:no-underline hover:text-blue-light"><i
-                                    class="fa fa-comment fa-lg mr-2"></i> 9</a></span>
+                            class="text-grey-dark hover:no-underline hover:text-blue-light"><i
+                                class="fa fa-comment fa-lg mr-2"></i>
+                            @if ($tweet->children()->count())
+                                {{ $tweet->children()->count() }}
+                            @else
+                        </a>0</span>
+                    @endif
 
                         {{-- bookmark section --}}
                         @if ($tweet->isFavoritedby(Auth::user()))

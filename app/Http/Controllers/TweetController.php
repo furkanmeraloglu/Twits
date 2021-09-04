@@ -63,15 +63,19 @@ class TweetController extends Controller {
         $request->validate( [
             'content' => 'required|max:240',
         ] );
+        $user = $request->user();
+        
+        $users = User::where( 'id', '!=', auth()->id() )->inRandomOrder()->simplePaginate( 5 );
         $Childtweet = new Tweet;
         $Childtweet->user_id = $request->user()->id;
         $Childtweet->content = $request->input( "content" );
         $Childtweet->parent_id = $tweet->id;
         $Childtweet->commentedUserNickname = $tweet->user->nickname;
         $Childtweet->save();
+        $tweetComments = $tweet->children()->get();
         $Childtweet->set_hashtags( $Childtweet->diverge_tags_from_content( $Childtweet->content ) ); // Tweet'in taglerini kaydediyoruz.
 
-        return redirect( '/dashboard' );
+        return view( 'tweet.show', compact( 'tweet', 'user', 'tweetComments', 'users' ) );
     }
 
     /**
