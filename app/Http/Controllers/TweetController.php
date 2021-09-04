@@ -123,12 +123,8 @@ class TweetController extends Controller {
     public function show( Tweet $tweet ) {
         $users = User::where( 'id', '!=', auth()->id() )->inRandomOrder()->simplePaginate( 5 );
         $user = $tweet->user;
-
         $tweetComments = $tweet->children()->get();
         return view( 'tweet.show', compact( 'tweet', 'tweetComments', 'user', 'users' ) );
-
-        /* return view('tweet.show', compact('tweet', 'user', 'users')); */
-
     }
     /**
      * Show the form for editing the specified resource.
