@@ -4,15 +4,15 @@
             <span class="text-lg font-bold"><a href="{{ route('users.index') }}">Who to follow</a></span>
 
         </div>
-        @foreach ($users as $user)
+        @foreach ($suggestedUsers as $user)
             <div class="flex border-b border-solid border-grey-light">
                 <div class="py-2">
-                   
-                  
+
+
                         <div><a href="{{ route('users.show', $user) }}"><img
                                     src="{{ asset('storage/' . $user->image_path) }}" alt="avatar"
                                     class="rounded-full h-12 w-12 mr-2"></a></div>
-                   
+
                 </div>
                 <div class="pl-2 py-2 w-full">
                     <div class="flex justify-between mb-1">

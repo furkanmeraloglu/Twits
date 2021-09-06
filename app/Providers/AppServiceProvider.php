@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider {
             $tags = [];
             $suggestedUsers = [];
         }
-        view()->share( 'rightMenuTags', [$tags, $suggestedUsers] );
+        view()->share('suggestedUsers', $suggestedUsers);
+        view()->share('rightMenuTags', $tags);
     }
 }
