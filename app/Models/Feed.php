@@ -9,14 +9,14 @@ class Feed extends Model
 {
     use HasFactory;
 
-    public function tweets()
+    public function tweet()
     {
-        return $this->hasMany(Tweet::class);
+        return $this->belongsTo(Tweet::class);
     }
 
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     protected $fillable = [

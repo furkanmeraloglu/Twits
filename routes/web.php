@@ -59,11 +59,10 @@ Route::get('feeds/{tweet}/unretweet', [FeedController::class, 'unretweet'])->nam
 /* Main Route for Dashboard */
 
 Route::get('/dashboard', function () {
-    $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
     $userIds = Auth::user()->followings->pluck('id')->toArray();
     $userIds[] = Auth::user()->id;
-    $tweets = Tweet::with(['user'])->whereIn('user_id', $userIds)->orderBy('created_at', 'desc')->get();
-    return view('dashboard', compact('users', 'tweets'));
+    $feed = Feed::with(['tweet', 'user', 'tweet.user'])->whereIn('user_id', $userIds)->orderBy('created_at', 'desc')->get();
+    return view('dashboard', compact('feed'));
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
