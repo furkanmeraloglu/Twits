@@ -90,7 +90,7 @@
                     class="text-teal no-underline hover:underline">Joined {{ Auth::user()->created_at }}</a></div>
 
             <a href="{{ route('users.edit', Auth::user()) }}"
-                class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-500">
+                class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-400 rounded-lg focus:shadow-outline hover:bg-blue-500">
                 Profilini Düzenle
             </a>
 
@@ -116,7 +116,7 @@
                     <textarea id="tweet" name="content" class="w-full pt-5 resize-none border rounded-md"></textarea>
                     <div class="flex">
                         <button id="tweet_button" type="submit"
-                            class="inline-flex items-center h-10 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-500">
+                            class="inline-flex items-center h-10 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-400 rounded-lg focus:shadow-outline hover:bg-blue-500">
                             Tweet!
                         </button>
                         <p id="tweet_counter" class="text-xs text-gray-600">0</p>

@@ -85,7 +85,7 @@
                     class="text-teal no-underline hover:underline">Joined {{ Auth::user()->created_at }}</a></div>
 
             <a href="{{ route('users.edit', Auth::user()) }}"
-                class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-500">
+                class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-400 rounded-lg focus:shadow-outline hover:bg-blue-500">
                 Profilini Düzenle
             </a>
 
@@ -148,7 +148,7 @@
                     </div>
                     <div class="flex justify-center mt-6">
                         <button type="submit"
-                            class="px-4 py-2 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Update</button>
+                            class="px-4 py-2 text-white transition-colors duration-200 transform bg-green-400 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Update</button>
                     </div>
                 </div>
             </form>

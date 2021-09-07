@@ -29,12 +29,12 @@
                     <div>
                         @if (Auth::user()->isFollowing($user->id))
                             <a href="{{ route('users.unfollow', $user) }}"
-                            class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-500">
+                            class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-400 rounded-lg focus:shadow-outline hover:bg-blue-500">
                                 Unfollow
                             </a>
                         @else
                             <a href="{{ route('users.follow', $user) }}"
-                            class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-500">
+                            class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-400 rounded-lg focus:shadow-outline hover:bg-blue-500">
                                 Follow
                             </a>
                         @endif
@@ -60,12 +60,9 @@
         </div>
 
         <div class="mb-3 text-xs">
-            <span class="mr-2"><a href="#" class="text-grey-darker">&copy; 2021 Twitter</a></span>
-            <span class="mr-2"><a href="#" class="text-grey-darker">About</a></span>
-            <span class="mr-2"><a href="#" class="text-grey-darker">Help Center</a></span>
-            <span class="mr-2"><a href="#" class="text-grey-darker">Terms</a></span>
-            <span class="mr-2"><a href="#" class="text-grey-darker">Privacy policy</a></span>
-            <span class="mr-2"><a href="#" class="text-grey-darker">Cookies</a></span>
-            <span class="mr-2"><a href="#" class="text-grey-darker">Ads info</a></span>
+            <span class="mr-2"><a href="https://github.com/furkanmeraloglu/baby-twitter/blob/main/LICENSE.txt" class="text-grey-darker">Twits Have MIT Licence</a></span>
+            <span class="mr-2"><a href="https://github.com/furkanmeraloglu/baby-twitter" class="text-grey-darker">Github</a></span>
+            <span class="mr-2"><a href="https://quickabdest.com/" class="text-grey-darker">Help Center</a></span>
+            
         </div>
     </div>

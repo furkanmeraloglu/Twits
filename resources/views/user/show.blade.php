@@ -65,12 +65,12 @@
                 <div class="mr-6">
                     @if (Auth::user()->isFollowing($user->id))
                         <a href="{{ route('users.unfollow', $user) }}"
-                            class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
+                            class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-green-400 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
                             UnFollow
                         </a>
-                    @else
+                    @elseif(Auth::user()->id !== $user->id)
                         <a href="{{ route('users.follow', $user) }}"
-                            class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
+                            class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-green-400 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
                             Follow
                         </a>
                     @endif
