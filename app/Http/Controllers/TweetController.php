@@ -59,7 +59,8 @@ class TweetController extends Controller {
 
     public function add_comment( Tweet $tweet ) {
         $users = User::where( 'id', '!=', auth()->id() )->inRandomOrder()->simplePaginate( 5 );
-        return view( 'tweet.comment', compact( 'tweet', 'users' ) );
+        $user = Auth::user();
+        return view( 'tweet.comment', compact( 'tweet', 'users', 'user' ) );
     }
 
     public function comment( Request $request, Tweet $tweet ) {

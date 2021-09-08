@@ -6,6 +6,7 @@ use App\Models\Tag;
 use App\Models\Tweet;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TagController extends Controller
 {
@@ -17,9 +18,10 @@ class TagController extends Controller
     public function index()
     {
         $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
+        $user = Auth::user();
         $tweets = Tweet::all();
         $tags = Tag::withCount('tweets')->orderBy('tweets_count', 'desc')->paginate(10);
-        return view ('tag.index', compact(['tags', 'users', 'tweets']));
+        return view ('tag.index', compact(['tags', 'users', 'tweets', 'user']));
     }
 
     /**

@@ -29,12 +29,12 @@
                     <div>
                         @if (Auth::user()->isFollowing($user->id))
                             <a href="{{ route('users.unfollow', $user) }}"
-                            class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-400 rounded-lg focus:shadow-outline hover:bg-blue-500">
+                            class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-400 rounded-lg focus:shadow-outline hover:bg-green-600">
                                 Unfollow
                             </a>
                         @else
                             <a href="{{ route('users.follow', $user) }}"
-                            class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-400 rounded-lg focus:shadow-outline hover:bg-blue-500">
+                            class="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-400 rounded-lg focus:shadow-outline hover:bg-green-600">
                                 Follow
                             </a>
                         @endif

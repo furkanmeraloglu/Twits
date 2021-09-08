@@ -7,6 +7,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider {
     /**
@@ -31,7 +32,9 @@ class AppServiceProvider extends ServiceProvider {
             $tags = [];
             $suggestedUsers = [];
         }
+        $user = Auth::user();
         view()->share('suggestedUsers', $suggestedUsers);
         view()->share('rightMenuTags', $tags);
+        
     }
 }
