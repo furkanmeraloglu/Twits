@@ -37,6 +37,7 @@ class SendFollowNotification extends Notification
     {
         return [
             'followTime' => Carbon::now(),
+            'comment' => 'New follower!',
         ];
     }
 

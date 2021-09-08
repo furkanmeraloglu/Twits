@@ -37,6 +37,7 @@ class SendLikeNotification extends Notification
     {
         return [
             'likeTime' => Carbon::now(),
+            'comment' => 'New like on your Tweet',
         ];
     }
 

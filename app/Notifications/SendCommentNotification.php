@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Carbon;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Models\Tweet;
 
 class SendCommentNotification extends Notification
 {
@@ -37,6 +38,10 @@ class SendCommentNotification extends Notification
     {
         return [
             'commentTime' => Carbon::now(),
+            'comment' => 'New comment on your Tweet',
+            
+            
+            
         ];
     }
 
@@ -63,7 +68,9 @@ class SendCommentNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+
+            'name' => $notifiable->user->nickname,
+            'time' => Carbon::now(),
         ];
     }
 }
