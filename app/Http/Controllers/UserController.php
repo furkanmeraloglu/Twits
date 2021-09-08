@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tweet;
+use App\Notifications\SendFollowNotification;
 use Multiavatar;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,6 +16,7 @@ class UserController extends Controller
     public function follow(Request $request, User $user)
     {
         $request->user()->follow($user);
+        $user->notify(new SendFollowNotification());
         return redirect()->route('dashboard');
     }
 
@@ -61,7 +63,7 @@ class UserController extends Controller
     }
 
     public function creatUserAvatar(User $user){
-        
+
         $multiavatar = new Multiavatar();
         $avatarId = uniqId();
         $fileName = $avatarId . '.' . 'svg';
@@ -125,13 +127,13 @@ class UserController extends Controller
         ]);
 
             if($request->bio != null){$user->bio = $request->bio;}
-            if($request->nickname != null){$user->nickname = $request->nickname;} 
+            if($request->nickname != null){$user->nickname = $request->nickname;}
             if($request->website != null){$user->website = $request->website;}
-            
 
-        
+
+
         if($request->hasFile('avatar')){
-            
+
             $img = $request->file('avatar');
             $newAvatarName = uniqid() . '.' . $img->getClientOriginalExtension();
                 if($user->image_path != null){
@@ -139,7 +141,7 @@ class UserController extends Controller
                 }
             Storage::disk('public')->put($newAvatarName, file_get_contents($img));
             $user->image_path = $newAvatarName;
-            
+
         }if($request->hasFile('bgimg')){
             $bgimg = $request->file('bgimg');
             $newBgimgName = uniqid() . '.' . $bgimg->getClientOriginalExtension();
@@ -149,7 +151,7 @@ class UserController extends Controller
             Storage::disk('public')->put($newBgimgName, file_get_contents($bgimg));
             $user->bg_image_path = $newBgimgName;
         }
-       
+
             $user->save();
 
         return redirect()->route('dashboard');

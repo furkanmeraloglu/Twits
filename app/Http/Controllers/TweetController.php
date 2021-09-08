@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Tweet;
 use App\Models\User;
+use App\Notifications\SendCommentNotification;
+use App\Notifications\SendLikeNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,6 +17,7 @@ class TweetController extends Controller {
 
     public function like( Request $request, Tweet $tweet ) {
         $request->user()->like( $tweet );
+        $tweet->user->notify(new SendLikeNotification());
         return redirect()->route( 'dashboard' );
     }
 
@@ -64,7 +67,7 @@ class TweetController extends Controller {
             'content' => 'required|max:240',
         ] );
         $user = $request->user();
-        
+
         $users = User::where( 'id', '!=', auth()->id() )->inRandomOrder()->simplePaginate( 5 );
         $Childtweet = new Tweet;
         $Childtweet->user_id = $request->user()->id;
@@ -75,6 +78,7 @@ class TweetController extends Controller {
         $tweetComments = $tweet->children()->get();
         $Childtweet->set_hashtags( $Childtweet->diverge_tags_from_content( $Childtweet->content ) ); // Tweet'in taglerini kaydediyoruz.
 
+        $tweet->user->notify(new SendCommentNotification());
         return view( 'tweet.show', compact( 'tweet', 'user', 'tweetComments', 'users' ) );
     }
 
