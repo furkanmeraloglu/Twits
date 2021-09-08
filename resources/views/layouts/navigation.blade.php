@@ -11,10 +11,10 @@
     <a href="{{ route('tweets.getFavorites', Auth::user()) }}"
         class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-green-400 hover:no-underline"><i
             class="fa fa-bookmark fa-lg"></i> Bookmarks </a>
-    
+
 
 </nav>
-<div class="w-full lg:w-1/5 text-center my-4 lg:my-0"><a href="{{ route('dashboard') }} "><img src="{{ asset('storage/logo.jpg') }}" alt="twits!"></a>
+<div class="w-full lg:w-1/5 text-center my-4 lg:my-0"><a href="{{ route('dashboard') }} "><img src="{{ asset('images/logo.jpg') }}" alt="twits!"></a>
 </div>
 <div class="w-full lg:w-2/5 flex lg:justify-end">
     <div class="mr-4 relative">
@@ -23,13 +23,13 @@
     <!-- Settings Dropdown -->
     <div class="hidden sm:flex sm:items-center sm:ml-6">
         <x-dropdown align="right" width="48">
-            
+
             <x-slot name="trigger">
                 <img class="rounded h-10 w-10 object-cover"
                     src="{{ asset('storage/' . Auth::user()->image_path) }}"
                     alt="logo" />
                 {{-- <button
-               
+
                     class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                     <div>{{ Auth::user()->name }}</div>
 
@@ -55,7 +55,7 @@
                 </form>
                 <x-dropdown-link href="https://quickabdest.com/" target="_blank">Help Center</x-dropdown-link>
             </x-slot>
-            
+
         </x-dropdown>
     </div>
     <div><button class="bg-teal hover:bg-teal-dark text-white font-medium py-2 px-4 rounded-full">Tweet</button></div>
