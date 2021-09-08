@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tweet;
+use App\Models\Feed;
 use App\Notifications\SendFollowNotification;
 use Multiavatar;
 use Illuminate\Support\Facades\Storage;
@@ -92,8 +93,11 @@ class UserController extends Controller
     public function show(User $user)
     {
         $users = User::where('id', '!=', $user->id)->simplePaginate(5);
-        $tweets = $user->tweets()->get();
-        return view('user.show', compact('user', 'users', 'tweets'));
+        /* $tweets = $user->tweets()->get(); */
+        $userIds = $user->followings->pluck('id')->toArray();
+        $userIds[] = $user->id;
+        $feed = Feed::with(['tweet', 'user', 'tweet.user'])->whereIn('user_id', $userIds)->orderBy('created_at', 'desc')->get();
+        return view('user.show', compact('user', 'users', 'feed'));
     }
 
     /**
