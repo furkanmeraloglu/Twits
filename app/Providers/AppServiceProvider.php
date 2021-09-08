@@ -35,6 +35,7 @@ class AppServiceProvider extends ServiceProvider {
         $user = Auth::user();
         view()->share('suggestedUsers', $suggestedUsers);
         view()->share('rightMenuTags', $tags);
-        
+        view()->share('user', $user);
+
     }
 }

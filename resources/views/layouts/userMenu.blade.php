@@ -1,10 +1,11 @@
-@if ($user->bg_image_path === null)
+    @if ($user->bg_image_path === null)
         <div class="hero h-64 bg-cover h-112 full"
-            style="background-image: url({{ asset('storage/' . 'default_cover.jpg') }})">
+            style="background-image: url({{ asset('images/default_cover.jpg') }})">
         </div>
     @else
         <div class="hero h-64 bg-cover h-112 full"
-            style="background-image: url({{ asset('storage/' . $user->bg_image_path) }})"> </div>
+            style="background-image: url({{ asset('storage/' . $user->bg_image_path) }})">
+        </div>
     @endif
 
     <div class="bg-white shadow">
@@ -98,5 +99,5 @@
 
         </div>
 
-      
+
 

@@ -5,9 +5,9 @@
     <a href="{{ route('tags.index') }}"
         class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-green-400 hover:no-underline"><i
             class="fa fa-globe-europe fa-lg"></i> Explore </a>
-    
-    
-    
+
+
+
     <a href="{{ route('tweets.getFavorites', Auth::user()) }}"
         class="text-grey-darker text-sm mr-4 font-semibold pb-6 border-b-2 border-solid border-transparent no-underline hover:text-green-400 hover:no-underline"><i
             class="fa fa-bookmark fa-lg"></i> Bookmarks </a>
@@ -23,33 +23,30 @@
 
     {{-- Notifications dropdown --}}
     <div class="hidden sm:flex sm:items-center sm:ml-6">
+        @if(Auth::user()->unreadNotifications->count() > 0)
         <x-dropdown align="right" width="120px" class="w-full">
             <x-slot name="trigger">
-                @if(Auth::user()->unreadNotifications->count() > 0)
                 <span class="text-xl tracking-tighter text-red-500">
                     <x-svg.bell class="h-7 -mr-1 w-7  align-text-top animate-bounce origin-top"/>
                     <sup>{{ Auth::user()->unreadNotifications->count() }}</sup>
                 </span>
-                @else
                 <span class="text-xl tracking-tighter text-green-500">
                     <x-svg.bell class="h-7 -mr-1 w-7  align-text-top origin-top"/>
                 </span>
-                @endif
+
             </x-slot>
-            @if(Auth::user()->notifications->count() > 0)
             <x-slot name="content">
                 @foreach(Auth::user()->unreadNotifications as $notification)
-                
                 <x-dropdown-link>{{ $notification->data['comment'] }}</x-dropdown-link>
                 {{ $notification->markAsRead(); }}
                 @endforeach
             </x-slot>
-            @endif
         </x-dropdown>
+        @endif
     </div>
 
     {{-- Notifications dropdown end --}}
-    
+
     <!-- User Dropdown -->
     <div class="hidden sm:flex sm:items-center sm:ml-6">
         <x-dropdown align="right" width="48">
