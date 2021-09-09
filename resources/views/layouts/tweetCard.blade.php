@@ -46,7 +46,7 @@
             @if ($item->tweet->isFavoritedby(Auth::user()))
                 <span class="mr-8"><a href="{{ route('tweets.unfavorite', $item->tweet) }}"
                         class="text-grey-dark hover:no-underline hover:text-blue-light"><i
-                            class="fa fa-bookmark fa-lg mr-2 text-red-700"></i>{{ $tweet->favoriters()->count() }}
+                            class="fa fa-bookmark fa-lg mr-2 text-red-700"></i>{{ $item->tweet->favoriters()->count() }}
                     </a></span>
             @else
                 <span class="mr-8"><a href="{{ route('tweets.favorite', $item->tweet) }}"
