@@ -18,10 +18,11 @@ class TagController extends Controller
     public function index()
     {
         $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
-        $user = Auth::user();
+        $bg_destination = "tag_cover.jpg";
         $tweets = Tweet::all();
         $tags = Tag::withCount('tweets')->orderBy('tweets_count', 'desc')->paginate(10);
-        return view ('tag.index', compact(['tags', 'users', 'tweets', 'user']));
+
+        return view ('tag.index', compact(['tags', 'users', 'tweets', 'bg_destination']));
     }
 
     /**

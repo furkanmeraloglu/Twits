@@ -28,7 +28,7 @@ class TweetController extends Controller {
     }
 
     public function getLikes( Request $request, User $user ) {
-        $user = $request->user();
+        
         $users = User::where( 'id', '!=', auth()->id() )->inRandomOrder()->simplePaginate( 5 );
         $likes = $user->likes()->with( 'likeable' )->orderBy( 'created_at', 'DESC' )->get();
         return view( 'tweet.likes', compact( 'likes', 'users', 'user' ) );

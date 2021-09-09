@@ -22,7 +22,7 @@
             <div class="w-full lg:w-1/2">
                 <ul class="list-reset flex">
                     <li class="text-center py-3 px-4 border-b-2 border-solid border-transparent border-teal">
-                        <a href="{{ route('tweets.index') }}" class="text-grey-darker no-underline hover:no-underline">
+                        <a href="{{ route('tweets.index', $user) }}" class="text-grey-darker no-underline hover:no-underline">
                             <div class="text-sm font-bold tracking-tight mb-1">Tweets</div>
                             <div class="text-lg tracking-tight font-bold text-teal">
                                 {{ $user->tweets()->count() }}</div>

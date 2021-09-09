@@ -1,1 +1,1 @@
-<img src="{{ asset('storage/logo.jpg') }}" alt="twits!">
+<img src="{{ asset('images/logo.jpg') }}" alt="twits!">

@@ -49,8 +49,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(5);
-        $usersIndex = User::all()->except(auth()->id());
-        return view('user.index', compact('usersIndex', 'users'));
+        $usersIndex = User::where('id', '!=', auth()->id())->inRandomOrder()->simplePaginate(10);
+        $bg_destination = "user_index_cover.jpg";
+        return view('user.index', compact('usersIndex', 'users', 'bg_destination'));
     }
 
     /**
@@ -97,7 +98,7 @@ class UserController extends Controller
         $userIds = $user->followings->pluck('id')->toArray();
         $userIds[] = $user->id;
         $feed = Feed::with(['tweet', 'user', 'tweet.user'])->whereIn('user_id', $userIds)->orderBy('created_at', 'desc')->get();
-        return view('user.show', compact('user', 'users', 'feed'));
+        return view('user.show', compact('user', 'users', 'feed', 'user'));
     }
 
     /**
