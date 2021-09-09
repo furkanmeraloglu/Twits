@@ -30,9 +30,8 @@
                     <x-svg.bell class="h-7 -mr-1 w-7  align-text-top animate-bounce origin-top"/>
                     <sup>{{ Auth::user()->unreadNotifications->count() }}</sup>
                 </span>
-                <span class="text-xl tracking-tighter text-green-500">
-                    <x-svg.bell class="h-7 -mr-1 w-7  align-text-top origin-top"/>
-                </span>
+                
+                
 
             </x-slot>
             <x-slot name="content">
@@ -42,6 +41,10 @@
                 @endforeach
             </x-slot>
         </x-dropdown>
+        @else
+            <span class="text-xl tracking-tighter text-green-500">
+            <x-svg.bell class="h-7 -mr-1 w-7  align-text-top origin-top"/>
+        </span>
         @endif
     </div>
 
