@@ -9,8 +9,12 @@
                     </div>
                     <div class="w-7/8 p-3 pl-0">
                         @if ($item->tweet->parent_id)
-                            <div><i class="fa fa-comment text-grey-dark mr-2"></i><span
-                                    class="text-xs text-grey-dark">{{ 'Replys to: ' . '@' . $item->tweet->commentedUserNickname }}</span>
+                            <div><i class="fa fa-comment text-grey-dark mr-2"></i><a href="{{ route('users.show', $item->tweet->parent->user) }}"><span
+                                    class="text-xs text-grey-dark">{{ 'Replied to ' . '@' . $item->tweet->commentedUserNickname }}</span></a>
+                            </div>
+                        @elseif ($item->isRetweet === 1)
+                            <div><i class="fa fa-retweet text-grey-dark mr-2"></i><a href="{{ route('users.show', $item->tweet->user) }}"><span
+                                class="text-xs text-grey-dark">{{ 'Retweeted from ' . '@' . $item->tweet->user->nickname }}</span></a>
                             </div>
                         @endif
                         <div class="flex justify-between">
@@ -87,7 +91,7 @@
     </div>
     </div>
 
-    
+
 
     @endforeach
     </div>
