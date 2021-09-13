@@ -24,12 +24,9 @@ We, as enthusiastic learners and new developers, kicked of this project in order
 
 ## Run the Project
 
-- For Those Using [Homestead](https://laravel.com/docs/8.x/homestead) 
-  - Clone the git repository on your local homestead directory
+  - Clone the git repository
     `git clone https://github.com/furkanmeraloglu/Twits.git`
-  - Modify the `.env.example` file in accordance with your `homestead.yaml`settings.
-    - Do not forget to run `vagrant reload --provision`after the homestead.yaml configuration. 
-  - Configure your `etc/hosts` to get your route settings proper and working. 
+  - Modify the `.env.example` file in accordance with your database settings.
   - Attach a fresh application key to the project via `php artisan key:generate` 
   - Run necessary npm commands; `npm install & npm run dev` 
   - Install required packeges by running; `composer install` and update if necessary `composer update` 
