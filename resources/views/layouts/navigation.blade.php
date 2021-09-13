@@ -14,7 +14,7 @@
 
 
 </nav>
-<div class="w-full lg:w-1/5 text-center my-4 lg:my-0"><a href="{{ route('dashboard') }} "><img src="{{ asset('images/logo.jpg') }}" alt="twits!"></a>
+<div class="w-full lg:w-1/5 text-center my-4 lg:my-0"><a href="{{ route('dashboard') }} "><img src="{{ asset('images/logo.png') }}" alt="twits!"></a>
 </div>
 <div class="w-full lg:w-2/5 flex lg:justify-end">
     <div class="mr-4 relative">
@@ -30,8 +30,8 @@
                     <x-svg.bell class="h-7 -mr-1 w-7  align-text-top animate-bounce origin-top"/>
                     <sup>{{ Auth::user()->unreadNotifications->count() }}</sup>
                 </span>
-                
-                
+
+
 
             </x-slot>
             <x-slot name="content">
