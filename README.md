@@ -9,22 +9,24 @@ We, as enthusiastic learners and new developers, kicked of this project in order
 ## Features
 
 - Register/Login
-- Add Tweet - Tweet Char Count at the bottom
+- Add Twitt - Twitt Char Count at the bottom
 - Followers/Following
 - 'Who to Follow' and 'Trends For You' Sections
-- Like/Retweet/Comment/Bookmark Tweets
+- Like/Retwitt/Comment/Bookmark Twitts
 - User Profiles
-- Explore Section associated with tweets' #tags
+- Explore Section associated with twits' #tags
 - Comment, like, bookmark notifications shown on the navbar
+
 ## Upcoming Features and Ongoing Fixes
 
 - Adaptation of Vue.js on frontend operations (live updates and animations)
 - Mobile first frontend improvements in terms of the responsiveness of the app. 
+
 ## Run the Project
 
 - For Those Using [Homestead](https://laravel.com/docs/8.x/homestead) 
   - Clone the git repository on your local homestead directory
-    `git clone (git@github.com:furkanmeraloglu/baby-twitter.git)`
+    `git clone https://github.com/furkanmeraloglu/Twits.git`
   - Modify the `.env.example` file in accordance with your `homestead.yaml`settings.
     - Do not forget to run `vagrant reload --provision`after the homestead.yaml configuration. 
   - Configure your `etc/hosts` to get your route settings proper and working. 
