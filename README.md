@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="{{ asset('images/logo.png') }}" alt="twits!" width="400"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="{{ asset('public/images/logo.png') }}" alt="twits!" width="400"></a></p>
 
 <h1 align="center"><strong>Twits!</strong></h1>
 
