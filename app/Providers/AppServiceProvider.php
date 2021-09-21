@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider {
     /**
@@ -25,6 +26,9 @@ class AppServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
+        if($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
         try {
             $suggestedUsers = User::where( 'id', '!=', auth()->id() )->inRandomOrder()->simplePaginate( 5 );
             $tags = Tag::withCount( 'tweets' )->orderBy( 'tweets_count', 'desc' )->take( 5 )->get();
