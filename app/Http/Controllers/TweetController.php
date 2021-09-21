@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tweet;
 use App\Models\User;
+use App\Models\Feed;
 use App\Notifications\SendCommentNotification;
 use App\Notifications\SendLikeNotification;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class TweetController extends Controller {
     }
 
     public function getLikes( Request $request, User $user ) {
-        
+
         $users = User::where( 'id', '!=', auth()->id() )->inRandomOrder()->simplePaginate( 5 );
         $likes = $user->likes()->with( 'likeable' )->orderBy( 'created_at', 'DESC' )->get();
         return view( 'tweet.likes', compact( 'likes', 'users', 'user' ) );
@@ -90,9 +91,11 @@ class TweetController extends Controller {
      */
     public function index( Request $request ) {
         $user = Auth::user();
-        $tweets = Tweet::where( 'user_id', $user->id )->orderBy( 'created_at', 'desc' )->get();
         $users = User::where( 'id', '!=', auth()->id() )->inRandomOrder()->simplePaginate( 5 );
-        return view( 'dashboard', compact( 'tweets', 'users' ) );
+        $userIds = Auth::user()->followings->pluck('id')->toArray();
+        $feed = Feed::with(['tweet', 'user', 'tweet.user'])->whereIn('user_id', $userIds)->orderBy('created_at', 'desc')->get();
+
+        return view( 'dashboard', compact( 'feed', 'userIds', 'users', 'user' ) );
     }
     /**
      * Show the form for creating a new resource.
