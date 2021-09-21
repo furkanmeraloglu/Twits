@@ -7,12 +7,9 @@
         @foreach ($suggestedUsers as $user)
             <div class="flex border-b border-solid border-grey-light">
                 <div class="py-2">
-
-
                         <div><a href="{{ route('users.show', $user) }}"><img
                                     src="{{ asset('storage/' . $user->image_path) }}" alt="avatar"
                                     class="rounded-full h-12 w-12 mr-2"></a></div>
-
                 </div>
                 <div class="pl-2 py-2 w-full">
                     <div class="flex justify-between mb-1">
@@ -60,9 +57,9 @@
         </div>
 
         <div class="mb-3 text-xs">
-            <span class="mr-2"><a href="https://github.com/furkanmeraloglu/baby-twitter/blob/main/LICENSE.txt" class="text-grey-darker">Twits Have MIT Licence</a></span>
-            <span class="mr-2"><a href="https://github.com/furkanmeraloglu/baby-twitter" class="text-grey-darker">Github</a></span>
-            <span class="mr-2"><a href="https://quickabdest.com/" class="text-grey-darker">Help Center</a></span>
-            
+            <span class="mr-2"><a href="https://github.com/furkanmeraloglu/baby-twitter/blob/main/LICENSE.txt" class="text-grey-darker" target="_blank">Twits Have MIT Licence</a></span>
+            <span class="mr-2"><a href="https://github.com/furkanmeraloglu/baby-twitter" class="text-grey-darker" target="_blank">Github</a></span>
+            <span class="mr-2"><a href="https://quickabdest.com/" class="text-grey-darker" target="_blank">Help Center</a></span>
+
         </div>
     </div>
