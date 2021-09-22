@@ -14,7 +14,11 @@
 
 
 </nav>
-<div class="w-full lg:w-1/5 text-center my-4 lg:my-0"><a href="{{ route('dashboard') }} "><img src="{{ asset('images/logo.png') }}" alt="twits!"></a>
+<div class="w-full lg:w-1/5 text-center my-4 lg:my-0" style="height: 75px;"><a href="{{ route('dashboard') }} "><img
+            src="{{ asset('images/logo.png') }}" alt="twits!" style="width: 120px;
+    height: 85px;
+    padding: 0px;
+    margin: auto;"></a>
 </div>
 <div class="w-full lg:w-2/5 flex lg:justify-end">
     <div class="mr-4 relative">
@@ -23,28 +27,28 @@
 
     {{-- Notifications dropdown --}}
     <div class="hidden sm:flex sm:items-center sm:ml-6">
-        @if(Auth::user()->unreadNotifications->count() > 0)
-        <x-dropdown align="right" width="120px" class="w-full">
-            <x-slot name="trigger">
-                <span class="text-xl tracking-tighter text-red-500">
-                    <x-svg.bell class="h-7 -mr-1 w-7  align-text-top animate-bounce origin-top"/>
-                    <sup>{{ Auth::user()->unreadNotifications->count() }}</sup>
-                </span>
+        @if (Auth::user()->unreadNotifications->count() > 0)
+            <x-dropdown align="right" width="120px" class="w-full">
+                <x-slot name="trigger">
+                    <span class="text-xl tracking-tighter text-red-500">
+                        <x-svg.bell class="h-7 -mr-1 w-7  align-text-top animate-bounce origin-top" />
+                        <sup>{{ Auth::user()->unreadNotifications->count() }}</sup>
+                    </span>
 
 
 
-            </x-slot>
-            <x-slot name="content">
-                @foreach(Auth::user()->unreadNotifications as $notification)
-                <x-dropdown-link>{{ $notification->data['comment'] }}</x-dropdown-link>
-                {{ $notification->markAsRead(); }}
-                @endforeach
-            </x-slot>
-        </x-dropdown>
+                </x-slot>
+                <x-slot name="content">
+                    @foreach (Auth::user()->unreadNotifications as $notification)
+                        <x-dropdown-link>{{ $notification->data['comment'] }}</x-dropdown-link>
+                        {{ $notification->markAsRead() }}
+                    @endforeach
+                </x-slot>
+            </x-dropdown>
         @else
             <span class="text-xl tracking-tighter text-green-500">
-            <x-svg.bell class="h-7 -mr-1 w-7  align-text-top origin-top"/>
-        </span>
+                <x-svg.bell class="h-7 -mr-1 w-7  align-text-top origin-top" />
+            </span>
         @endif
     </div>
 
@@ -55,8 +59,7 @@
         <x-dropdown align="right" width="48">
 
             <x-slot name="trigger">
-                <img class="rounded h-10 w-10 object-cover"
-                    src="{{ asset('storage/' . Auth::user()->image_path) }}"
+                <img class="rounded h-10 w-10 object-cover" src="{{ asset('storage/' . Auth::user()->image_path) }}"
                     alt="logo" />
                 {{-- <button
 

@@ -22,13 +22,13 @@
     </head>
     <body class="bg-grey-light font-sans">
         <div class="bg-white">
-            <div class="container mx-auto flex flex-col lg:flex-row items-center py-4">
+            <div class="container mx-auto flex flex-col lg:flex-row items-center">
             @include('layouts.navigation')
         </div>
-            
+
             <!-- Page Content -->
             <main>
-               
+
                 {{ $slot }}
 
             </main>
