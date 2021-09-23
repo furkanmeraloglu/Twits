@@ -30,8 +30,15 @@ class AppServiceProvider extends ServiceProvider {
             URL::forceScheme('https');
         }
         try {
-            $suggestedUsers = User::where( 'id', '!=', auth()->id() )->inRandomOrder()->simplePaginate( 5 );
-            $tags = Tag::withCount( 'tweets' )->orderBy( 'tweets_count', 'desc' )->take( 5 )->get();
+            $suggestedUsers = User::select('id', 'name', 'nickname', 'image_path', 'svg')
+                ->where( 'id', '!=', auth()->id() )
+                ->inRandomOrder()
+                ->simplePaginate( 5 );
+            $tags = Tag::select('id', 'hashtag')
+                ->withCount( 'tweets' )
+                ->orderBy( 'tweets_count', 'desc' )
+                ->take( 5 )
+                ->get();
         } catch ( Exception $e ) {
             $tags = [];
             $suggestedUsers = [];

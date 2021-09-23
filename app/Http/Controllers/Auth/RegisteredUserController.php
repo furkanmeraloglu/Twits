@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Events\CreateUser;
+use Illuminate\Support\Str;
 
 
 
 
 class RegisteredUserController extends Controller
 {
-    
+
     /**
      * Display the registration view.
      *
@@ -43,19 +44,19 @@ class RegisteredUserController extends Controller
             'nickname' => 'required|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            
+
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'name' => Str::title($request->name),
             'nickname' => $request->nickname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            
+
         ]);
 
         event(new Registered($user));
-       
+
 
         Auth::login($user);
 

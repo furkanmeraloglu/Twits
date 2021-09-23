@@ -16,6 +16,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Followable, Liker, Favoriter;
 
+    /* public function retweeters()
+    {
+
+    } */
+
     public function feeds()
     {
         return $this->belongsToMany(Feed::class);

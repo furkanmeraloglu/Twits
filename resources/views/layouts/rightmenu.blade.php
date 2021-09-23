@@ -2,7 +2,6 @@
     <div class="bg-white p-3 mb-3">
         <div>
             <span class="text-lg font-bold"><a href="{{ route('users.index') }}">Who to follow</a></span>
-
         </div>
         @foreach ($suggestedUsers as $user)
             <div class="flex border-b border-solid border-grey-light">
@@ -49,7 +48,7 @@
             @foreach ($rightMenuTags as $tag)
             <div class="mb-3 leading-tight">
                 <div><a href="{{ route('tags.show', $tag) }}" class="text-teal font-bold">{{$tag->hashtag}}</a></div>
-                <div><a href="{{ route('tags.show', $tag) }}" class="text-grey-dark text-xs">{{ $tag->tweets->count() }} Tweets </a></div>
+                <div><a href="{{ route('tags.show', $tag) }}" class="text-grey-dark text-xs">{{ $tag->tweets->count() }} Twits </a></div>
             </div>
 
             @endforeach

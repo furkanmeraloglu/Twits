@@ -13,6 +13,11 @@ class Tweet extends Model
 {
     use HasFactory, Likeable, Favoriteable, Notifiable;
 
+    /* public function retweets()
+    {
+        return $this->
+    } */
+
     public function parent()
     {
         return $this->belongsTo(Tweet::class, 'parent_id');
@@ -79,5 +84,5 @@ class Tweet extends Model
         }
     }
 
-    
+
 }

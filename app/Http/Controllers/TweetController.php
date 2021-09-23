@@ -56,6 +56,12 @@ class TweetController extends Controller {
         return view( 'tweet.favorites', compact( 'favorites', 'user', 'users' ) );
     }
 
+    /* public function getRetweet(User $user)
+    {
+
+        return view('tweet.retwits', compact());
+    } */
+
     // Comment
 
     public function add_comment( Tweet $tweet ) {
@@ -91,11 +97,10 @@ class TweetController extends Controller {
      */
     public function index( Request $request ) {
         $user = Auth::user();
-        $users = User::where( 'id', '!=', auth()->id() )->inRandomOrder()->simplePaginate( 5 );
         $userIds = Auth::user()->followings->pluck('id')->toArray();
         $feed = Feed::with(['tweet', 'user', 'tweet.user'])->whereIn('user_id', $userIds)->orderBy('created_at', 'desc')->get();
 
-        return view( 'dashboard', compact( 'feed', 'userIds', 'users', 'user' ) );
+        return view( 'dashboard', compact( 'feed', 'userIds', 'user' ) );
     }
     /**
      * Show the form for creating a new resource.

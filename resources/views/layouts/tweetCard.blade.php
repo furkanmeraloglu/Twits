@@ -62,8 +62,10 @@
             {{-- Retweet --}}
                     @if ($item->isRetweet == null)
             <span class="mr-8"><a href="{{ route('feeds.retweet', $item->tweet) }}"
-                    class="text-grey-dark hover:no-underline hover:text-green"><i class="fa fa-retweet fa-lg mr-2"></i>
-                    </a></span>
+                    class="text-grey-dark hover:no-underline hover:text-green">
+                    <i class="fa fa-retweet fa-lg mr-2"></i></a>
+                    0
+            </span>
                     @else
             <span class="mr-8"><a href="{{ route('feeds.unretweet', $item->tweet) }}"
                     class="text-grey-dark hover:no-underline hover:text-green"><i class="fa fa-retweet fa-lg mr-2 text-red-700"></i>

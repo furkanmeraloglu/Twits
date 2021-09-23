@@ -4,11 +4,7 @@
 
     <div class="w-full lg:w-1/2 bg-white mb-4">
 
-        <div class="p-3 text-lg font-bold border-b border-solid border-grey-light">
-            <a href="{{ route('tweets.index') }}" class="text-black mr-6 no-underline hover-underline">Tweets</a>
-            <a href="#" class="mr-6 text-teal no-underline hover:underline">Tweets &amp; Replies</a>
-            <a href="#" class="mr-6 text-teal no-underline hover:underline">Retweets</a>
-        </div>
+
 
         {{-- Tweet section --}}
 
@@ -19,9 +15,12 @@
                 <div class="flex">
                     <button id="tweet_button" type="submit"
                         class="inline-flex items-center h-10 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-400 rounded-lg focus:shadow-outline hover:bg-green-600">
-                        Tweet!
+                        Twit!
                     </button>
-                    <p id="tweet_counter" class="text-xs text-gray-600">0</p>
+                    <div id="tweet_counter"
+                        class="inline-flex items-center h-10 my-2 px-4 text-lg text-indigo-100 bg-red-400 rounded-lg focus:shadow-outline ">
+                        0
+                    </div>
                 </div>
             </div>
         </form>
